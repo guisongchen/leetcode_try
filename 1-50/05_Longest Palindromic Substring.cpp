@@ -12,6 +12,9 @@ Input: "cbbd"
 Output: "bb"
 */
 
+// solution 1
+// 1. use dynamic planning(which needs given recursive fomular)
+// 2. two sub-problem: find maxLen and startIdx
 class Solution {
 public:
     string longestPalindrome(string s) {
@@ -37,8 +40,8 @@ public:
         }
         dp[n-1][n-1] = true;  
 
-        for (int len = 2; len <= n; len++) { 
-            for (int startIdx = 0; startIdx <= n-len; startIdx++) {
+        for (int len = 2; len <= n; len++) { // aim to find maxLen
+            for (int startIdx = 0; startIdx <= n-len; startIdx++) { // aim to find Best startIdx 
                 int endIdx = startIdx+len-1;
                 if (s[startIdx] == s[endIdx] &&
                     (endIdx == startIdx+1 || dp[startIdx+1][endIdx-1])) {
@@ -56,3 +59,6 @@ public:
         return s.substr(bestStartIdx, maxLen);
     }
 };
+
+// solution 2: use manacher's algorithm
+
