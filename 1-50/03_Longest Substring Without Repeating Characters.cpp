@@ -59,7 +59,7 @@ public:
                 // move left_prev to mp[curChar], aka we narrow the window
                 // if curChar NOT in window, we are safe
                 
-                // curChar in window
+                // make sure curChar in window, aka mp[curChar] > left_prev
                 if (left_prev < mp[curChar])
                     left_prev = mp[curChar];
             }
@@ -69,6 +69,7 @@ public:
             if (curDist > maxDist)
                 maxDist = curDist;
             
+          // step 3: update map using curChar
             // map's key value can't be same.
             // throw every character we meet into map, since we use char as key value
             // if curChar exist, it will be update, if not, it will be added
