@@ -61,4 +61,51 @@ public:
 };
 
 // solution 2: use manacher's algorithm
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        // use manacher's algorithm
+        
+        // step 1: padding to unite even and odd case
+        string t = "$#";
+        for (int i = 0, n = s.size(); i < n; ++i) {
+            t += s[i];
+            t + = "#";
+        }
+        
+        // step 2: init parameters
+        vector<int> p(t.size(), 0);  // palindrome length of string t
 
+        // we use center of prev longestPalindrome to compute center of current longestPalindrome
+        // which give us recursive formula
+        int prevCtr = 0, prevR = 0;
+        
+        // init return value: maxCtr and maxR
+        int maxCtr = 0, maxR = 0;
+        
+        // compute p[i] recursively, since we add "$" at first, means p[0] = 0
+        // we start form i = 1
+        for (int i = 1, n = t.size(); i < n; ++i) {
+            
+            // do recuesive
+            
+            //       j      mirror        prevCtr   prevR       i
+            //       |         |            |          |        |
+            // -----xxxxx-------------------x----------------xxxxxxx--------------
+            if (prevR <= i) 
+                p[i] = 1;
+            
+            // mirror of prevR   j             prevCtr     i               prevR
+            // |                 |             |           |                |
+            // ---------------xxxxxxx----------x--------xxxxxxx--------------
+            // 
+            
+            else {
+                if (prevR >= i + p[i])
+            }
+            
+            
+            
+        }
+    }
+};
