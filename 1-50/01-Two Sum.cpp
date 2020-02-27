@@ -14,6 +14,7 @@ return [0, 1].
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        // keypoint: <value, idx>
         unordered_map<int, int> hash;
         const int N = nums.size();     
         vector<int> res;
