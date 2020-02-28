@@ -17,6 +17,11 @@ Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
 
+// keypoints:
+// 1. seperate number into two part: left and right, compare left and reverse-right
+//    even and odd amounts digits should treated differently
+// 2. corner case: negative number, single number, number ends with zeros
+
 class Solution {
 public:
     bool isPalindrome(int x) {
@@ -38,7 +43,8 @@ public:
             x = x / 10;
         }
         
-        // for even: reverse; for odd: reverse/10
+        // if digits number is even : reverse = remian; 
+        // for odd cese: reverse/10 = remian, using /10 to clean mid-point, e.g.: 12121
         return x == reverse || x == reverse/10 ;
     }
 };
