@@ -10,7 +10,7 @@ Output: 49
 
 */
 
-// keypoints: kind of like binary search and sliding window
+// keypoints: use double pointer and sliding window
 // 1. use two pointer left and right to identify window range
 // 2. use left++ and right-- to update window size
 // when left++?
