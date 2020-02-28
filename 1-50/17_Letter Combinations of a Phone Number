@@ -13,6 +13,11 @@ Note:
 Although the above answer is in lexicographical order, your answer could be in any order you want.
 */
 
+// keypoints: 
+// 1. use unordered_map to build hash
+// 2. use dfs to find solutions
+// 3. end condition: each recursive will add one character to curStr, when curStr size equal to digits, add to result
+
 class Solution {
 public:
     vector<string> letterCombinations(string digits) {
