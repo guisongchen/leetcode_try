@@ -10,6 +10,9 @@ Output: 49
 
 */
 
+// keypoints:
+// 
+
 class Solution {
 public:
     int maxArea(vector<int>& height) {
