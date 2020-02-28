@@ -42,6 +42,9 @@ Explanation: The number "-91283472332" is out of the range of a 32-bit signed in
              Thefore INT_MIN (−231) is returned.
  */
  
+// keypoints:
+// 1. seperate digits from string . corner case: space, '-', non-digit head....
+// 2. rebuild digits, cautions about overflow: INT_MAX and INT_MIN
  
  class Solution {
 public:
