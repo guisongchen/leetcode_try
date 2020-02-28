@@ -17,6 +17,12 @@ Note:
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
 */
 
+// keypoints:
+// 1. seperate every single digit from nums, and rebuild reverse number
+// 2. corner case like: negative number, number ending with one or more zeros
+// 3. when rebuild number, must careful about overflow, both negative and positive case
+// 4. INT_MAX = 2^31-1, INT_MIN = -2^31, not simple flip signal
+
 class Solution {
 public:
     int reverse(int x) {
