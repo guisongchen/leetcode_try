@@ -15,7 +15,9 @@ Output: 1->1->2->3->4->4
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
- 
+
+// keypoints:
+// 1. compare and reorder list
  
 class Solution {
 public:
@@ -51,12 +53,6 @@ public:
             cur = cur->next;
         }
         
-        /*
-        if (!l1) {
-            cur->next = l2;
-        } else if (!l2) {
-            cur->next = l1;
-        }*/
         
         cur->next = l1 ? l1 : l2;
         
