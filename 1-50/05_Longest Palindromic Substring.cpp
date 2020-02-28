@@ -70,15 +70,17 @@ public:
         string t = "$#";
         for (int i = 0, n = s.size(); i < n; ++i) {
             t += s[i];
-            t + = "#";
+            t += '#';
         }
         
         // step 2: init parameters
+        // unpadding length should be p[i]-1
         vector<int> p(t.size(), 0);  // palindrome length of string t
 
         // we use center of prev longestPalindrome to compute center of current longestPalindrome
         // which give us recursive formula
-        int prevCtr = 0, prevR = 0;
+        // prevUpper means prev upper index of palindrome, prevUpper = prevCtr + p[prevCtr]
+        int prevCtr = 0, prevUpper = 0;
         
         // init return value: maxCtr and maxR
         int maxCtr = 0, maxR = 0;
@@ -87,25 +89,62 @@ public:
         // we start form i = 1
         for (int i = 1, n = t.size(); i < n; ++i) {
             
+            // p[i] means palindrome length at index i
+            
             // do recuesive
             
-            //       j      mirror        prevCtr   prevR       i
-            //       |         |            |          |        |
-            // -----xxxxx-------------------x----------------xxxxxxx--------------
-            if (prevR <= i) 
-                p[i] = 1;
+            //       j      mirror        prevCtr   prevUpper  i
+            //       |         |            |          |       |
+            // -----xxxxx-------------------x----------------xxxxx----
             
-            // mirror of prevR   j             prevCtr     i               prevR
+            
+            // mirror of prevUp  j             prevCtr     i               prevUpper
             // |                 |             |           |                |
             // ---------------xxxxxxx----------x--------xxxxxxx--------------
-            // 
+            //                                          --p[j]-
             
+            // mirror of prevUp  j            prevCtr          i     prevUpper
+            //       |           |             |               |      |
+            //    xxxxxxxxxxxxxxxxxxx----------x--------xxxxxxxxxxxxxxxxxx
+            //                                          -----p[j]----- ???
+            
+            // init p[i] according to different condition
+            if (prevUpper < i) 
+                p[i] = 1;
             else {
-                if (prevR >= i + p[i])
+                // p[i] = p[j], since loop from j to i, j is known number
+                // j = 2*prevCtr-i
+                if (prevUpper >= i + p[2*prevCtr - i]) 
+                    p[i] = p[2*prevCtr - i]; 
+                else{
+                    p[i] = prevUpper - i; // only this part is confromed palindrome
+                }
+                
+                // in fact, for simplicity, we can only take min part, write this:
+                // p[i] = min(p[2*prevCtr - i], prevUpper - i);
             }
             
+            // update p[i] value
+            // use i as center point, p[i] as init radius
+            while (t[i - p[i]] == t[i + p[i]])
+                ++p[i];
             
+            // update state to do next recursive
+            if (i + p[i] > prevUpper) {
+                prevUpper = i + p[i];
+                prevCtr = i;
+            }
+            
+            // update return value
+            if (p[i] > maxR) {
+                maxR = p[i];
+                maxCtr = i;
+            }
             
         }
+        
+        // since we padding using "#", original radius = padding radius - 1 
+        // and we shouls start from left side of palindrome, which is (maxCtr-maxR)/2
+        return s.substr((maxCtr-maxR)/2, maxR - 1);
     }
 };
