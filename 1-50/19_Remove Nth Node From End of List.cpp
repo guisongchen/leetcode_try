@@ -25,44 +25,40 @@ Could you do this in one pass?
  */
  
  
+// keypoints:
+// use one loop to solve this: consider using two pointer
+// 1. next pointer is N-1 steps after cur pointer
+// 2. then cur and next pointer move step by step
+// 3. when next pointer reach end, cur pointer is Nth node from end of list
+
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        
         ListNode* cur = head;
-        int cnt = 0;
-        while (cur) {
+        ListNode* next = head;
+        
+        // move next pointer n steps after cur
+        // notice n is always valid, so we don't check next pointer here
+        for (int i = 1; i < n; ++i) { // start from i = 1 here
+            next = next->next;
+        }
+        
+        // move step by step, until next reach end
+        
+        // corner case: remove first node
+        if (!next->next)
+            return head->next;
+        
+        ListNode* prev = cur;
+        while (next->next) {
+            prev = cur;
             cur = cur->next;
-            cnt++;
+            next = next->next;
         }
         
-        ListNode* last;
-        //ListNode* next;
+        // delete N-th node from end of list
+        prev->next = cur->next;
         
-        // corner case, if n == cnt, last is null
-        if (n == 1) {
-            
-            // if last exist
-            if (cnt >= 2) {
-                last = head;
-                for (int i = 1; i <= cnt-n-1; i++)
-                    last = last->next;
-            } else { // if cnt = n = 1
-                return nullptr;
-            }
-            
-            last->next = nullptr;
-            
-        } else if (n == cnt) {// corner case, if n == cnt && n > 1, last is null
-            head = head->next;
-        } else { // remove target neither begin or end, last and next exist, cnt >= 3
-            last = head;
-            for (int i = 1; i <= cnt-n-1; i++)
-                last = last->next;
-            cur = last->next; // remove target
-            //next = cur->next;
-            last->next = cur->next;
-        }
         return head;
     }
 };
