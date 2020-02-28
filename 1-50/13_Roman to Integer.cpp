@@ -43,8 +43,8 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 */
 
 // keypoints:
-// 1. use hash table to map roman and integer
-// 2. how to identify small roman ahead of big roman, e.g. IV?
+// 1. use hash table to map Roman and integer
+// 2. how to identify small Roman ahead of big roman, e.g. IV?
 //    -> first add prev to result, if cur big than prev, add prev twice from result  
 //    -> if (cur > prev)  res -= 2 * prev;
 
