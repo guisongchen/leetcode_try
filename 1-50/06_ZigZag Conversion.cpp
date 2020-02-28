@@ -25,3 +25,35 @@ Y A   H R
 P     I
 */
 
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        // corner case
+        if (numRows == 1)
+            return s;
+        
+        // keypoint:
+        // 1. use string to store each row, use vector to store string
+        // 2. use % to decide when to flip direction
+        // 3. notice givern numRows start from 1 and vector index from 0
+        
+        vector<string> result(numRows);
+        int curRow = 0;
+        bool rowDownFlag = false;
+        
+        for (char c : s) {
+            result[curRow] += c;
+            if (curRow % (numRows-1) == 0)
+                rowDownFlag = ! rowDownFlag;
+            
+            // next row index
+            curRow += rowDownFlag ? 1 : -1;
+        }
+        
+        string res;
+        for (int i = 0; i < numRows; i++)
+            res += result[i];
+        
+        return res;
+    }
+};
