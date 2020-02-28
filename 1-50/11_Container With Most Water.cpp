@@ -10,8 +10,13 @@ Output: 49
 
 */
 
-// keypoints:
-// 
+// keypoints: kind of like binary search and sliding window
+// 1. use two pointer left and right to identify window range
+// 2. use left++ and right-- to update window size
+// when left++?
+// -> height[left] < height[right], so we move right to get better result
+// when right--?
+// -> height[right] <= height[left], so we move left to get better result
 
 class Solution {
 public:
