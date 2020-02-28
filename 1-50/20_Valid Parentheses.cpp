@@ -29,6 +29,10 @@ Input: "{[]}"
 Output: true
 */
 
+// keypoints:
+// 1. use stack to verify string
+// 2. use hash to map left and right parentheses
+
 class Solution {
 public:
     bool isValid(string s) {     
