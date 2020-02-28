@@ -17,6 +17,14 @@ A solution set is:
 
 */
 
+// keypoints:
+// basic idea: fix one element, then choose another two elements(like 2 sum)
+//
+// How to handle it efficiently and without repeat elements
+// 1. sort, we search along with sorted number, and skip the repeated ones(which is import)
+// 2. use double pointer, search from left and right side of sorted array
+// 3. cut branches, when the fix number is positive, since sorted from small to big, we can break safely
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -52,7 +60,7 @@ public:
                     lt++;
                     rt--;
                     
-                    // handle redundant for left and right elements
+                    // handle repeated elements for left and right elements
                     while (lt < rt && nums[lt] == nums[lt-1])
                         lt++;
                     while (lt < rt && nums[rt] == nums[rt+1])
