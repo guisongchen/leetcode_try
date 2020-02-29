@@ -12,6 +12,8 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 1,1,5 → 1,5,1
 */
 
+// keypoint is to find the trick
+
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
