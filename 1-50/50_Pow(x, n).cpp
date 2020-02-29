@@ -16,6 +16,32 @@ Output: 0.25000
 Explanation: 2-2 = 1/22 = 1/4 = 0.25
 */
 
+
+// solution 1
+// keypoints:
+// 1. half power to speed up, e.g.:  x^4 = (x^2)^2
+// -- start form i = n, 
+// -- if i is even, double x, if i is odd, multiply result with x
+
+class Solution {
+public:
+    double myPow(double x, int n) {
+
+        double res = 1.0;
+        
+        for (int i = n; i != 0; i /= 2) {
+            if (i % 2 != 0) 
+                res *= x;
+            
+            x *= x;
+        }
+        
+        return n < 0 ? 1 / res : res;
+    }
+};
+
+// solution 2
+
 class Solution {
 public:
     double myPow(double x, int n) {
