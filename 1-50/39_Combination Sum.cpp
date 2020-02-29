@@ -26,6 +26,10 @@ A solution set is:
 ]
 */
 
+// keypoints:
+// 1. use dfs to find all matched results
+// 2. sort to speed up.(since sorted, we can cut branches to reduce runtime)
+
 class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
