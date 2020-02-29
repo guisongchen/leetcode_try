@@ -21,6 +21,11 @@ Input:
 Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 */
 
+// keypoints:
+// 1. assign boundaries to traverse
+//    --- use four indexs: left, right, up, down;
+// 2. careful about "=", make sure no overlap exist
+
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
