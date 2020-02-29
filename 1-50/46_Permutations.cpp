@@ -15,6 +15,18 @@ Output:
 ]
 */
 
+// keypoints:
+// 1. use dfs to get all matched results
+// 2. there are many ways to do dfs
+
+// normal method: use cur-vector to store current permutation, use visited-vector to mark used element
+// more efficent method: not use cur-vector, not use visited-vector, use swap!
+// we swap two numbers to get new permutation, and restore it after recursive.
+// we keep 0~start fix, permutation start+1 ~ n-1, so we need to choose start from 0 to n-1
+// and the next recursive should begin with "start+1", moving forward one step
+// by doing this, we don't need to consider repeated cases, since numbers are distinct, and we traverse forward, no backtrace
+
+
 class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
