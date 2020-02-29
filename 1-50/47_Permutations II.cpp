@@ -11,6 +11,16 @@ Output:
   [2,1,1]
 ]
 */
+// keypoints: cut branches by if-expression
+
+// if ( i>0 && !visited[i-1] && nums[i] == nums[i-1])
+// MUST be "!visited[i-1]", use "i-1" here
+// we already know visited[i] is false here
+// if visited[i-1] is false, two possible reason:
+// 1. nums[i-1] is not used, which is impossible, since we move forward, i-1 must be used
+// 2. nums[i-1] is used before, this is retrieved value after dfs
+//    since it is used, and nums[i] == nums[i-1]
+//    means put nums[i] into num[i-1] position will cause repeat permutation
 
 class Solution {
 public:
