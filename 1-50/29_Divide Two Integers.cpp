@@ -20,13 +20,21 @@ The divisor will never be 0.
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 231 − 1 when the division result overflows.
 */
 
+// keypoints:
+// 1. transform divident and devisor into positive number, then handle singal at return time
+// 2. use taylor expension to do divide (32bit int) 
+//    from 31 to 0 (32 bit)
+//      dividend -= divisor << (31-i)
+//      result += 1 << (31-i)
+// 3. handle overflow(INT_MAX, INT_MIN), which INT_MIN = -2^31, INT_MAX = 2^31-1
+
 class Solution {
 public:
     int divide(int dividend, int divisor) {
         // taylor expension
         // a = y/x
         // y = x*1 + x*2^1 + ... + x*2^n = x + x<<1 + ... + x<<n)
-        // a = 0 + 2^1 + ... + 2^n
+        // a = 2^0 + 2^1 + ... + 2^n
         
         // corner case
         if (divisor == 0) // this won't happen
