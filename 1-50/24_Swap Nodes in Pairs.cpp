@@ -18,6 +18,69 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
+// solution 1:
+
+// keypoints:
+// 1. use deamon node to return swaped list
+// 2. deamon node act as prev node, notice prev node has no change during swap
+// 3. handling swap problem, we usually hanlde from next to cur(end to start)
+// 4. careful about corner cases
+
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        
+        // use deamon node to return head of swaped list
+        
+        // corner case
+        if (!head)
+            return head;
+        
+        //  prev     cur      next
+        //   |        |         |               
+        // deamon -- head -- head->next -- head->next->next 
+        //
+        //  prev     next      cur
+        //   |        |         |               
+        // deamon -- head -- head->next -- head->next->next 
+        ListNode* deamon = new ListNode(0);
+        deamon->next = head;
+        ListNode* prev = deamon;
+        ListNode* cur = head;
+        
+        while (cur && cur->next) {
+            
+            // swap pair cur and next
+            ListNode* next = cur->next;
+            prev->next = next;
+            cur->next = next->next;
+            next->next = cur;
+            
+            // update prev, cur
+            prev = cur;
+            cur = cur->next;
+        }
+        
+        return deamon->next;
+        
+    }
+};
+
+
+// solution 2:
+
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
