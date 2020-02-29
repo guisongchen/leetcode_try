@@ -17,6 +17,13 @@ Both num1 and num2 do not contain any leading zero, except the number 0 itself.
 You must not use any built-in BigInteger library or convert the inputs to integer directly.
 */
 
+// keypoints:
+// following rule should be observed:
+// 1. (n1*n2).size <= n1.size+n2.size
+// 2. i-th 0f num1 * j-th of num2, result stay at i+j and i+j+1 of final multiply result
+// 3. add all data at each position together, we get final result
+// 4. careful about leading zero 
+
 class Solution {
 public:
     string multiply(string num1, string num2) {
