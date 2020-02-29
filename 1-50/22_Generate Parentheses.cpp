@@ -12,6 +12,13 @@ For example, given n = 3, a solution set is:
 ]
 */
 
+// keypoints:
+// 1. use dfs to find all matched pairs
+// 2. parentheses must all start from '('
+// 3. number of '(' must equal to number of ')' n (a.k.a left = right)
+// 4. when use left?   left < n
+// 5. when use right?  right < left
+
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
