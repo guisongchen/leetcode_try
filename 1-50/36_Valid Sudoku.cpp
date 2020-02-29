@@ -43,6 +43,15 @@ Explanation: Same as Example 1, except with the 5 in the top left corner being
     modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
 */
 
+// keypoints:
+// 1. how to represent those characters in board?
+//    -> use vector<vector<bool>> is a choose, 
+//    -> better choose is use short and each bit of short represent element in row or col or box
+// 2. how to check current element exist in col or row or box ?
+//    -> use '&'
+// 3. how to update state of each col or row or box after traverse current element?
+//    -> use '|'
+
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
