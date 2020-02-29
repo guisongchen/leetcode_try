@@ -18,6 +18,7 @@ Output: 1->1->2->3->4->4
 
 // keypoints:
 // 1. compare and reorder list
+// 2. two list may not have the same length, add rest list after ordered list
  
 class Solution {
 public:
