@@ -16,6 +16,14 @@ All inputs will be in lowercase.
 The order of your output does not matter.
 */
 
+// keypoints:
+// 1. how to identify anagrams? -->  sort!
+// 2. how to group?  -->  HashMap!
+// little trick about hashmap: key-> sorted string, key value-> index in result vector(start from 0)
+// -- anagram has same sorted string
+// -- if hash[string] not exist, create a new empty vector<string> for result,
+// -- if hash[string] exist, push_back into result[result.size()]
+
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
