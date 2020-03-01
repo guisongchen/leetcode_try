@@ -48,6 +48,29 @@ public:
     }
 };
 
+// keypoints:
+// 1. use dynamic planning
+// 2. transform formular: dp[i] = max(dp[i-1], nums[i-1]) - 1;
+//    two cases:
+//    dp[i-1] - 1: skip index i
+//    nums[i-1] - 1: using index i
+
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        // dynamic planning
+        vector<int> dp(nums.size(), 0);
+        int n = nums.size();
+
+        for (int i = 1; i < n; ++i) {
+            dp[i] = max(dp[i-1], nums[i-1]) - 1;
+            if (dp[i] < 0)
+                return false;
+        }
+        
+        return true;
+    }
+};
 
 class Solution {
 public:
