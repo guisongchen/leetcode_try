@@ -15,6 +15,11 @@ Output: 7
 Explanation: Because the path 1→3→1→1→1 minimizes the sum.
 */
 
+// keypoints:
+// 1. use dynamic planning
+// 2. handle corner case like: i = 0, j = 0
+// 3. we can create new array dp or use original grid array
+
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {
