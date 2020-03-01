@@ -14,6 +14,9 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
 */
 
+// keypoints:
+// 1. notice intervals only consist two numbers, so we can sort by first, then compare the second
+
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
