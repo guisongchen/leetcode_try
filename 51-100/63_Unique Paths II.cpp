@@ -27,6 +27,9 @@ There are two ways to reach the bottom-right corner:
 2. Down -> Down -> Right -> Right
 */
 
+// solution 1:
+// use dynamic planning
+
 class Solution {
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
@@ -76,4 +79,41 @@ public:
         
         return pos[row][col];
     }
+};
+
+// solution 2:
+// of course we can use dfs to solve this.
+
+class Solution {
+public:
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        // NULL case
+        if (obstacleGrid.size() == 0)
+            return 0;
+        
+        //vector<vector<int>> reachCnt(obstacleGrid);
+        //const int row = obstacleGrid.size();
+        //const int col = obstacleGrid[0].size();
+        
+        // use input obstacleGrid as reachCnt
+        // since obstacle is '1', if we use "+1" represent a successed reach
+        // it will be missed up with obstacle. 
+        // to distinguish them, use "-1" represent a successed reach
+        return -1 * dfs(obstacleGrid.size()-1, obstacleGrid[0].size()-1, obstacleGrid);
+    }
+    
+private:
+    int dfs(int row, int col, vector<vector<int>>& reachCnt) {
+        if ( row < 0 || col < 0 || reachCnt[row][col] == 1) {
+            return 0;
+        } else if (col == 0 && row == 0) {
+            return -1;
+        } else if (reachCnt[row][col] < 0) {
+            return reachCnt[row][col];
+        } else {
+            reachCnt[row][col] = dfs(row-1, col, reachCnt) + dfs(row, col-1, reachCnt);
+            return reachCnt[row][col];
+        }
+    }
+    
 };
