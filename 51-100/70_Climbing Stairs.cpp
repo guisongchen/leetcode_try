@@ -22,6 +22,10 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 */
 
+// keypoints:
+// 1. using dynamic planning, dp[i] = dp[i-1] + dp[i-2];
+// 2. corner case: n =1, n =2
+// 3. step from 1 to n, dp should from 0 to n, with dp[0] = 1
 
 class Solution {
 public:
