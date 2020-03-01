@@ -10,6 +10,10 @@ Example:
 Input: "Hello World"
 Output: 5
 */
+// keypoints:
+// 1. take care of " " at the end of string,
+// 2. loop from end to begin, encounter first un-space character start counting
+// 3. stop counting when encounter space character
 
 class Solution {
 public:
