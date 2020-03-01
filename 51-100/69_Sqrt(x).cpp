@@ -23,30 +23,29 @@ public:
         if (x < 2)
             return x;
         
-        // notice the fact: since x > 1, sqrt_x must lies on the range of [1, n]
+        // notice the fact: since x > 1, sqrt_x must lies on the range of [1, x]
         // use binary search
         
-        // NOTE: since x > 2, we have sqrt(x) < x/2
-        int left = 1, right = x/2;
-        while (left <= right) {
+        // NOTE: since x > 2, we have sqrt(x) < x
+        int left = 1, right = x;
+        while (left < right) {
             
             // NOTE: NOT use (left+right) / 2, if left=right=INT_MAX, overflow!!
             int mid = left + (right-left) / 2;
             
             // NOTE: NOT use mid*mid = x, if mid=INT_MAX, overflow!!
             if (mid == x/mid) {
-                return mid;
+                left = mid + 1;
             } else {
                 if (mid > x/mid) {
-                    right = mid - 1;
+                    right = mid;
                 }  else {
                     left = mid + 1;
                 }
             }
         }
         
-        // if not return before, answer must lies on left or right, since we truncated sqrt
-        // choose the minmum
-        return min(left, right);
+        // return left(samller), since we truncated sqrt
+        return left-1;
     }
 };
