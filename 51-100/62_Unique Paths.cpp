@@ -25,6 +25,10 @@ Input: m = 7, n = 3
 Output: 28
 */
 
+// keypoints:
+// 1. use dfs;
+// 2. use memo to record success times at each grid
+
 class Solution {
 public:
     int uniquePaths(int m, int n) {
