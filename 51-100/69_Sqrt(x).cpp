@@ -18,9 +18,12 @@ Explanation: The square root of 8 is 2.82842..., and since
 */
 
 // keypoints:
-// 1. this range should between [1, x]
+// 1. this range should between [1, x/2 + 1]
 // 2. use binary search to find answer
 // 3. looking for right boundary
+// 4. caution about overflow
+//    -->  mid = left + (right-left)/2
+//    -->  mid*mid == x ---> mid = x /mid
              
 class Solution {
 public:
@@ -33,7 +36,7 @@ public:
         // use binary search
         
         // NOTE: since x > 2, we have sqrt(x) < x
-        int left = 1, right = x;
+        int left = 1, right = x/2+1;
         while (left < right) {
             
             // NOTE: NOT use (left+right) / 2, if left=right=INT_MAX, overflow!!
