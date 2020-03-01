@@ -19,6 +19,13 @@ rotate 3 steps to the right: 0->1->2->NULL
 rotate 4 steps to the right: 2->0->1->NULL
 */
 
+// keypoints:
+// 1. when k>n, we only need to handle k%n part
+// 2. to solve rotate case, we can link end node to the head, so we get a loop
+// 3. start from end node, trave n-k%n steps, we will reach prev node of the result(we call it last pointer)
+// 4. pointer last to nullptr, we break the loop, return result(we call it current pointer)
+
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
