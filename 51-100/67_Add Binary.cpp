@@ -13,6 +13,10 @@ Input: a = "1010", b = "1011"
 Output: "10101"
 */
 
+// keypoints:
+// 1. use longer length string store return reslut
+// 2. padding shorter string at the beginning with zeros to keep two strings aligned
+// 3. take care about carry, especially for i = 0 case
 
 class Solution {
 public:
