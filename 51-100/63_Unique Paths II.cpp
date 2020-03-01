@@ -28,7 +28,9 @@ There are two ways to reach the bottom-right corner:
 */
 
 // solution 1:
-// use dynamic planning
+// 1. use dynamic planning: pos[i][j] = pos[i-1][j] + pos[i][j-1];
+//    pos(i, j) is decided by left and up status(means successed paths at grid i,j)
+// 2. use padding to solve boundary issue,so we can handle i-1 and j-1 case
 
 class Solution {
 public:
@@ -41,14 +43,14 @@ public:
         int col = obstacleGrid[0].size();
         
         // since we only move right or down
-        // pos(i, j) is decided by left and up status
+        // pos(i, j) is decided by left and up status(means successed paths at grid i,j)
         // transform equation:
         // pos[i][j] = pos[i-1][j] + pos[i][j-1]
         // we use i-1 and j-1 to solve i,j, add padding 1X1 to avoid handling boundary
         //  * * * *
         //  * 0 0 0
         //  * 0 1 0
-        //  * 0 0 1
+        //  * 0 0 0
         
         // padding pos[0][0] = 0, start point is pos[1][1] = pos[0][1] + pos[1][0]
         // important thing is decide pos[0][1] or pos[1][0]
@@ -68,6 +70,7 @@ public:
         for (int i = 1; i < row+1; i++) {
             for (int j = 1; j < col+1; j++) {
                 // only at this situation, we can't move to pos[i][j]
+                // because we can't move to pos[i-1][j] or pos[i][j-1]
                 //  1 0
                 //  0 0
                 if (obstacleGrid[i-1][j-1] == 1)
