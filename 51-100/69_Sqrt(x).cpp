@@ -17,6 +17,36 @@ Explanation: The square root of 8 is 2.82842..., and since
              the decimal part is truncated, 2 is returned.
 */
 
+// keypoints: use Newton method
+// x^2 - n = 0, solve x;
+// init x0, get tagent line though x0, intersect  x-axis at point x1
+// x1 act same as x0, get x2....xn
+// when stop ? xj - xi <= 1e-6
+// f(x) = x^2 - n = 0  --> f'(x) = 2*x
+// tagent line:   f(xj) = f(xi) + f'(xi)(xj-xi)
+// intersect at x-axis:  f(xi) + f'(xi)(xj-xi) = 0
+// -> xj = -f(xi)/f'(xi) + xi,   since f'(xi) = 2xi
+// -> xj = xi - f(xi)/2xi = xi - (xi^2 - n)/2xi = xi/2 + n/2xi = (xi + n/xi) / 2
+// use double type here
+
+
+class Solution {
+public:
+    int mySqrt(int x) {
+        if (x < 2)
+            return x;
+        
+        double prev = 0.0, cur = 1.0;
+        
+        while (abs(prev-cur) > 1e-6) {
+            prev = cur;
+            cur = (cur + x/cur) / 2;
+        }
+        
+        return int(cur);
+    }
+};
+
 // keypoints:
 // 1. this range should between [1, x/2 + 1]
 // 2. use binary search to find answer
