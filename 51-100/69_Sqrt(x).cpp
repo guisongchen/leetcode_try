@@ -15,6 +15,12 @@ Input: 8
 Output: 2
 Explanation: The square root of 8 is 2.82842..., and since 
              the decimal part is truncated, 2 is returned.
+*/
+
+// keypoints:
+// 1. this range should between [1, x]
+// 2. use binary search to find answer
+// 3. looking for right boundary
              
 class Solution {
 public:
@@ -45,7 +51,7 @@ public:
             }
         }
         
-        // return left(samller), since we truncated sqrt
+        // since we truncated sqrt, return left-1
         return left-1;
     }
 };
