@@ -25,6 +25,11 @@ target = 13
 Output: false
 */
 
+// keypoints:
+// 1. use binary search
+// 2. use double pointers
+// 3. chose i = 0 and j = col as pointer, because i = 0 point to min of row, j = col point to max of row 
+
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
