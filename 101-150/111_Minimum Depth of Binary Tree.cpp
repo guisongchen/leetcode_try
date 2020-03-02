@@ -53,7 +53,7 @@ public:
 // solution 2
 // 1. keypoint is the path to LEAF node
 // 2. recursive is travial, we can do it iteratively
-// 3. do layer trarverse, return layer num of first LAEF node
+// 3. do layer trarverse, return layer num of first LAEF node(since traverse from top to down, first will be min)
 
 
 /**
