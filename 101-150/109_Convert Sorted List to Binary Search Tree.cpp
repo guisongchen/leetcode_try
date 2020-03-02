@@ -34,6 +34,13 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+// keypoints:
+// 1. find mid-point then use same trick as sorted array
+// 2. use fast and slow pointers to find mid-point
+// 3. record prev node of mid-point to split list into two parts
+
+
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
