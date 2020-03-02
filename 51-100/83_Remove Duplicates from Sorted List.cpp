@@ -11,6 +11,11 @@ Input: 1->1->2->3->3
 Output: 1->2->3
 */
 
+// keypoints:
+// 1. use two pointers 
+// 2. check pointer null before use it
+
+
 
 /**
  * Definition for singly-linked list.
@@ -20,6 +25,7 @@ Output: 1->2->3
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
