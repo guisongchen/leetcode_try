@@ -17,6 +17,10 @@ Return the following binary tree:
    15   7
 */
 
+// keypoints: divide and conque
+// 1. get root from postorder, then locate in inorder
+// 2. then find left and right subtree
+
 
 /**
  * Definition for a binary tree node.
