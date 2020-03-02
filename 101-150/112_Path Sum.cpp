@@ -19,6 +19,10 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 
 */
 
+// keypoints:
+// 1. pre-order traverse, root->left->root, such that root value will be added on leaves
+// 2. leaf's value will be the sum from root to leaf, compare with input to slove
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
