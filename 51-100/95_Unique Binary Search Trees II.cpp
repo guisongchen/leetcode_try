@@ -32,6 +32,16 @@ The above output corresponds to the 5 unique BST's shown below:
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+// keypoints:
+// 1. divide and conque: sub-questions:  
+//    left-tree: [1, i-1]
+//    root: i
+//    right-tree: [i+1, n]
+// 2. use memo to speed up, same range must have same result
+
+
+
 class Solution {
 public:
     vector<TreeNode*> generateTrees(int n) {
