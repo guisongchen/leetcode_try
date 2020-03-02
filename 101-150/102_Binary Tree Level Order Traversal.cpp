@@ -18,6 +18,11 @@ return its level order traversal as:
 
 */
 
+// keypoints:
+// 1. use bfs
+// 2. use queue to record each layer elements
+// 3. use queue.size() to control pop time, make sure only same layer elements are poped
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
