@@ -17,6 +17,11 @@ Given word = "SEE", return true.
 Given word = "ABCB", return false.
 */
 
+// keypoints:
+// 1. use dfs and visited matrix to mark used elements, use direction matrix to control traverse direction
+// 2. notice: element first marked as used, 
+//            if we checking all combinations and not return, we can mark it as un-used at last! 
+//            which means marked used at the beginning of loop and recover it at the ending of loop
 
 class Solution {
 public:
