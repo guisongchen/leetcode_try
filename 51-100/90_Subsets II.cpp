@@ -19,6 +19,10 @@ Output:
 
 */
 
+// keypoints:
+// 1. use dfs, sort at first make life easier
+// 2. skip duplicate in for-loop(thanks to sort make this efficient)
+// 3. using "i > start" to make sure at least use one of duplicates
 
 class Solution {
 public:
