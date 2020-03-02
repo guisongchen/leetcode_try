@@ -17,6 +17,15 @@ Output: 1->4->3->2->5->NULL
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+// keypoints:
+// 1. use deamon node in case reverse from head
+// 2. how to reverse?
+//    -> deamon  head  1    2    3    null
+//    -> deamon  1    head  2    3    null
+//    -> deamon  2     1   head  3    null
+//    -> deamon  3     2    1   head  null
+
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int m, int n) {
