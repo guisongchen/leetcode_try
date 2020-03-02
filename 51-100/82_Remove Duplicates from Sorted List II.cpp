@@ -20,6 +20,12 @@ Output: 2->3
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+// keypoints:
+// 1. if head exist duplicates, head node may be deleted
+// 2. use deamon node link to head, whether head exist or not, deamon->next will always be head of removed list
+// 3. use last pointer to help delete nodes
+
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
