@@ -56,9 +56,16 @@ public:
             // 1. push from top to down, may be left leaf or subtree without left-node
             // 2. pop from down to top
             // use prev to distinguish those two
+            //    case 1:       case 2:
+            //       i              i
+            //      /              /
+            //     root1        root2
+            //                      \
+            //                       j
+            
             root = s.back();
 
-            // if root is left leaf, which means has no right child
+            // if root is leaf, which means has no left and right child. case 1
             if (!root->left && !root->right && sum == cnt) {
                 vector<int> cur;
                 for (auto t : s) 
@@ -66,6 +73,7 @@ public:
                 ret.push_back(cur);
             }
 
+            // if root has right child. case 2
             if (root->right && root->right != prev) { // top to down, do iterative
                 root = root->right;
             } else { // down to top, root->right == prev(has visited!)
