@@ -9,6 +9,11 @@ Output: ["255.255.11.135", "255.255.111.35"]
 
 */
 
+// keypoints:
+// 1. use dfs
+// 2. notice corner cases: 010
+// 3. add "." after each segment except last one
+
 
 class Solution {
 public:
