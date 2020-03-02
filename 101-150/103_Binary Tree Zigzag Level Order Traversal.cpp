@@ -25,6 +25,13 @@ return its zigzag level order traversal as:
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+// keypoints:
+// 1. use bfs
+// 2. use queue to do layer traverse
+// 3. use flag to filp make zigzag
+// 4. use vector record and set from end to head when flip
+
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
