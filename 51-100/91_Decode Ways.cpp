@@ -19,6 +19,13 @@ Output: 3
 Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
 */
 
+// keypoints:
+// 1. use dynamic planning
+// 2. like "climbing stairs"
+// 3. corner case: 1001, 010...
+//  if (s[i-1] == '0')
+//  if (i > 1 && s.substr(i-2,2) <= "26" && s.substr(i-2, 2) >= "10")
+
 class Solution {
 public:
     int numDecodings(string s) {
