@@ -36,6 +36,13 @@ A simple improvement uses O(m + n) space, but still not the best solution.
 Could you devise a constant space solution?
 */
 
+// keypoints:
+// 1. set whole row or column zero may adding redudant zeros, which mess up whole matrix
+// 2. best solution is seperate rows and columns, first mark and set rows, then cols
+// 3. we can create new arraies to record row and col zeros, O(m+n)
+// 4. also we can use original first col and first row to record, which save space,
+//    but we need to check first row and col at first, and set them at last
+
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
