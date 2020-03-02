@@ -26,6 +26,21 @@ return its depth = 3.
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+// solution 1: recursively
+// solution 2: layer traverse, return layer count
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        // corner case
+        if (!root)
+            return 0;
+        // if root exist, depth+1
+        return 1+max(maxDepth(root->left), maxDepth(root->right));
+    }
+};
+
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
