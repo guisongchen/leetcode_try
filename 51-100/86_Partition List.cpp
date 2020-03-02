@@ -18,6 +18,38 @@ Output: 1->2->2->4->3->5
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+// solution 1:
+// baisc idea, put small node in a new list, original list are all big ones, link two lists
+// 1. create a new list, pick node whose value less than x linked at this new list
+// 2. original list left nodes are all bigger than x now, link the head to the tail of new list
+
+class Solution {
+public:
+    ListNode *partition(ListNode *head, int x) {
+        if (!head) return head;
+        ListNode *dummy = new ListNode(-1);
+        ListNode *newDummy = new ListNode(-1);
+        dummy->next = head;
+        ListNode *cur = dummy, *p = newDummy;
+        while (cur->next) {
+            if (cur->next->val < x) {
+                p->next = cur->next;
+                p = p->next;
+                cur->next = cur->next->next;
+                p->next = NULL;
+            } else {
+                cur = cur->next;
+            }
+        }
+        p->next = dummy->next;
+        return newDummy->next;
+    }
+};
+
+// solution 2:
+// relink nodes instead of create new list
+
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
