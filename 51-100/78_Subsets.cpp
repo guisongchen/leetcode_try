@@ -21,6 +21,49 @@ Output:
 
 */
 
+// solution 1
+// dfs works, nums sunsets number is 0 ~ nums.size(). run dfs for each of them
+
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        // NULL case
+        if (nums.size() == 0)
+            return vector<vector<int>>{};
+        
+        vector<vector<int>> ret;
+        for (int i = 0, n = nums.size(); i <= n; i++) {
+            vector<int> cur;
+            dfs(nums, i, ret, cur, 0);
+        }
+        
+        return ret;
+    }
+    
+private:
+    void dfs(vector<int>& nums, int k, vector<vector<int>>& ret,
+             vector<int>& cur, int idx) {
+        
+        if (cur.size() == k) {
+            ret.push_back(cur);
+            return;
+        }
+        
+        if (idx > nums.size())
+            return;
+        
+        for (int i = idx; i < nums.size(); i++) {
+            cur.push_back(nums[i]);
+            dfs(nums, k, ret, cur, i+1);
+            cur.pop_back();
+        }
+    }
+};
+
+// solution 2:
+// turn the problem into: use 0 ~ 2^nums.size() distinct numbers (by k >> 1)
+// we can do it in one loop
+
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
