@@ -49,3 +49,41 @@ public:
     }
     
 };
+
+
+// keypoints:
+// dfs always works
+
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        // corner case
+        if (n < 1 || k < 1)
+            return vector<vector<int>>{};
+        
+        vector<vector<int>> ret;
+        vector<int> cur;
+        dfs(n, k, ret, cur, 1);
+        
+        return ret;
+    }
+    
+private:
+    void dfs(int n, int k, vector<vector<int>>& ret,
+             vector<int>& cur, int idx) {
+        if (idx > n+1)
+            return;
+        
+        if (cur.size() == k) {
+            ret.push_back(cur);
+            return;
+        }
+        
+        for (int i = idx; i <= n; i++) {
+            cur.push_back(i);
+            dfs(n, k, ret, cur, i+1);
+            cur.pop_back();
+        }
+    }
+    
+};
