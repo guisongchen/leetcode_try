@@ -35,6 +35,10 @@ for (int i = 0; i < len; i++) {
 }
 */
 
+// keypoints:
+// 1. array is sorted, and twice repeated is allowed
+//   -> we only need to compare nums[i] and nums[i-2] !!
+
 
 class Solution {
 public:
