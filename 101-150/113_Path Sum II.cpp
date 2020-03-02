@@ -52,7 +52,7 @@ public:
                 root = root->left;
             }
             
-            // check last node, two possiblilites
+            // check last node, two possibilites
             // 1. push from top to down, may be left leaf or subtree without left-node
             // 2. pop from down to top
             // use prev to distinguish those two
@@ -78,5 +78,56 @@ public:
         }
         
         return ret;
+    }
+};
+
+
+// solution 2
+// 1. do it recursively, dfs
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> pathSum(TreeNode* root, int sum) {
+        // first, do it recursively
+        if (!root)
+            return vector<vector<int>>{};
+        
+        vector<vector<int>> ret;
+        vector<int> cur;
+        dfs(root, sum, ret, cur);
+        return ret;
+    }
+    
+    void dfs(TreeNode* root, int sum, vector<vector<int>>& ret, vector<int>& cur) {
+        if (!root)
+            return;
+        
+        // check leaf node
+        if (!root->left && !root->right && sum == root->val) {
+            cur.push_back(root->val);
+            ret.push_back(cur);
+            
+            // since we may use cur for right subtree, MUST roll back before return
+            cur.pop_back();
+            return;
+        }
+        
+        // tarverse both left and right branch
+        
+        // push at the beginning
+        // roll back at the end
+        cur.push_back(root->val);    
+        dfs(root->left, sum - root->val, ret, cur);
+        dfs(root->right, sum - root->val, ret, cur);
+        cur.pop_back();
     }
 };
