@@ -19,6 +19,10 @@ This is a follow up problem to Search in Rotated Sorted Array, where nums may co
 Would this affect the run-time complexity? How and why?
 */
 
+// keypoints:
+// 1. difference with Search in Rotated Sorted Array: may contain duplicates
+//    ===>   if (nums[mid] == nums[right] --right;
+
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
