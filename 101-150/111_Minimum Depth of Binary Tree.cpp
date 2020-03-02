@@ -18,6 +18,44 @@ return its minimum depth = 2.
 */
 
 
+// solution 1:
+// 1. path to leaf is height, choose the first leaf from top to down
+// 2. do it recursively
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        // keypoint is the path to LEAF node
+        if (!root)
+            return 0;
+        
+        // path to LEAF node, only search on leaf side(nullptr side)
+        if (!root->left)
+            return 1 + minDepth(root->right);
+        if (!root->right)
+            return 1 + minDepth(root->left);
+        
+        return 1 + min(minDepth(root->left), minDepth(root->right));
+    }
+};
+
+
+// solution 2
+// 1. keypoint is the path to LEAF node
+// 2. recursive is travial, we can do it iteratively
+// 3. do layer trarverse, return layer num of first LAEF node
+
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
