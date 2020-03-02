@@ -15,6 +15,29 @@ Output:
 ]
 */
 
+/*
+
+0 0 #initialization
+1 0
+1 1 
+1 2 #push_back
+1 3 #push_back
+1 4 #push_back
+1 5
+2 5
+2 2 
+2 3 #push_back
+2 4 #push_back
+...
+3 4 #push_back
+3 5
+4 5
+4 4
+4 5
+5 5 #stop 
+
+*/
+
 class Solution {
 public:
     vector<vector<int>> combine(int n, int k) {
