@@ -25,6 +25,21 @@ Output: -1->0->3->4->5
 */
 
 
+// keypoints:
+// compare with array, list can't go back, so it's tricky here
+// 1. use two list, one original list, another is new empty list
+// 2. split node one by one from original list
+// 3. add those node in order in the new list
+// 4. create new list avoid handling complex node link changes of old list 
+//
+// details:
+// 1. use deamon as head pointer of new list(return value: deamon->next)
+// 2. head is current poniter of old list
+// 3. cur is current poniter of new list
+// first loop: update head pointer of old list
+// second loop: find correct position in new list to put current poniter of old list
+// --> update "cur" to put "head"
+//
 
 /**
  * Definition for singly-linked list.
@@ -34,6 +49,51 @@ Output: -1->0->3->4->5
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+class Solution {
+public:
+    ListNode* insertionSortList(ListNode* head) {
+        if (!head)
+            return head;
+        
+        ListNode* deamon = new ListNode(0);
+        ListNode* cur = deamon;
+        
+        while (head) { // traverse old list
+            
+            // keep next value before update
+            // if we put head in new list, head->next will update
+            ListNode* next = head->next;
+            
+            // keep cur point to deamon
+            // because we search from head to end every time
+            cur = deamon;
+            
+            // use cur->next beacuse we put head between cur and cur->next
+            while (cur->next && cur->next->val <= head->val) {
+                cur = cur->next; // this make sure cur != nullptr
+            }
+            
+            // now : cur->val <= head->val && cur->next->val > head->val
+            head->next = cur->next;
+            cur->next = head;
+            head = next; 
+        }
+        
+        return deamon->next;
+    }
+};
+
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
 class Solution {
 public:
     ListNode* insertionSortList(ListNode* head) {
