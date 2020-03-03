@@ -76,7 +76,9 @@ public:
 */
 
 // two ways to solve graph copy: dfs and bfs
-// keypoint is how to handle neigbors
+// keypoint is how to handle neigbors, since it is graph, different node may share same neigbor
+// ==> use hashMap to map original nodes and new nodes
+// we use queue to keep not-checked nodes
 
 class Solution {
 public:
