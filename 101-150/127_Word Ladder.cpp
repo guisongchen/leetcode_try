@@ -35,6 +35,16 @@ Explanation: The endWord "cog" is not in wordList, therefore no possible transfo
 
 */
 
+// keypoints:
+// 1. search for minimum path, better use bfs
+// 2. bfs is linked with queue, we creater a queue to keep candidates, initilized with beginWord
+// 3. check each candidate(get front then pop)
+// 4. if word from wordlist only change one letter compared with current candidate(check from a to z), 
+//    push it into candidates, and erase from wordlist avoiding repeating
+// 5. use candidate.size() to control only check current layer, use layerCnt memory transform times.
+// 6. if candidate matches endWord, return layerCnt
+
+
 
 
 class Solution {
