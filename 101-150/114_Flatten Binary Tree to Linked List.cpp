@@ -21,6 +21,60 @@ The flattened tree should look like:
         5
          \
           6
+          
+*/
+
+// solution 1: try do it recursively
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        // keypoint is link left-subTree to the first right node of root
+        // maybe try to do it recursively
+        
+        // divide and consque
+        // first flatten left-child, then right-child
+        if (!root)
+            return;
+        if (root->left)
+            flatten(root->left);
+        if (root->right)
+            flatten(root->right);
+        
+        // then link flatted left-subTree to first right node of root
+        // two steps:
+        // 1. link end of left to first of right
+        // 2. link first of left to right of root
+        TreeNode* end = root->left;
+        
+        // find last node of left-subtree
+        while (end && end->right) {
+            end = end->right;
+        }
+        
+        // in case end is null
+        if (end) {
+            // point left end to right
+            end->right = root->right;
+            // point root right to left head
+            root->right = root->left;
+        }
+        // set left null
+        root->left = nullptr;
+    }
+};
+
+// solution 2:
+// 
 
 
 /**
