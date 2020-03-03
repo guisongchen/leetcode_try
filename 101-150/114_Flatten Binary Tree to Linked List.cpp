@@ -29,6 +29,7 @@ The flattened tree should look like:
 // 2. break link between root and left subtree
 // 3. link root->right with root of left subtree
 // 4. link left subtree right leaf(at bottom) with root right subtree
+// 5. like tree traverse, we can do it both recursively and iteratively
 
 
 // solution 1: try do it recursively
