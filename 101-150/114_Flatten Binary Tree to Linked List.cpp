@@ -24,6 +24,13 @@ The flattened tree should look like:
           
 */
 
+// keypoints:
+// 1. break link between root and right subtree
+// 2. break link between root and left subtree
+// 3. link root->right with root of left subtree
+// 4. link left subtree right leaf(at bottom) with root right subtree
+
+
 // solution 1: try do it recursively
 
 /**
