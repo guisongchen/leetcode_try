@@ -15,6 +15,65 @@ Output:
 
 */
 
+// solution 1:
+// 1. divide and conque, use dfs
+// 2. start from idx 0, divide into s[0] and s[1~end]
+// 3. check palindrome of those two, then divide s[1~end]
+
+// solution 2
+// 1. 
+
+
+class Solution {
+public:
+    vector<vector<string>> partition(string s) {
+        // do it recursively
+        // 1. start from idx 0, divide into s[0] and s[1~end]
+        // 2. check palindrome of those two, then divide s[1~end]
+        
+        vector<vector<string>> ret;
+        vector<string> cur;
+        partition(s, ret, cur);
+        return ret;
+    }
+    
+    void partition(string s, vector<vector<string>>& ret,
+                   vector<string>& cur) {
+        
+        if (s.size() == 0) {
+            ret.push_back(cur);
+            return;
+        }
+        
+        for (int i = 0, n = s.size(); i < n; i++) {
+            string temp = s.substr(0, i+1);
+            if (checkPalindrome(temp)) {
+                cur.push_back(temp);
+                partition(s.substr(i+1, n-i), ret, cur);
+                cur.pop_back();
+            }
+        }
+    }
+    
+    bool checkPalindrome(string& s) {
+        if (s.size() < 2)
+            return true;
+        
+        int left = 0;
+        int right = s.size()-1;    
+        while (left < right) {
+            if (s[left] == s[right]) {
+                left++;
+                right--;
+            } else {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+};
+
 
 
 class Solution {
@@ -64,24 +123,4 @@ public:
             }
         }
     }
-    
-    /*
-    bool checkPalindrome(string& s) {
-        if (s.size() < 2)
-            return true;
-        
-        int left = 0;
-        int right = s.size()-1;    
-        while (left < right) {
-            if (s[left] == s[right]) {
-                left++;
-                right--;
-            } else {
-                return false;
-            }
-        }
-        
-        return true;
-    }
-    */
 };
