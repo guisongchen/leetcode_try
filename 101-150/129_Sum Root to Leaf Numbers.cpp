@@ -35,6 +35,52 @@ Therefore, sum = 495 + 491 + 40 = 1026.
 */
 
 
+// solution 1
+// 1. we do it recursively
+// 2. keypoint is curSum = 10*rootVal + leftVal + rightVal
+// 3. recursive expression is :   dfs(curRootNode, parentVal)
+//    curVal: 10*parentVal + curRootNode->val
+//    sum = dfs(leftNode, curVal) + dfs(rightNode, curVal)
+
+
+// solution 2
+// 1. we do it iteratively
+// 2. pre-order traverse, add rootVal*10 on left and rigt node, return leaf sum value
+// 3. layer traverse also works
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int sumNumbers(TreeNode* root) {
+        // do it recursively
+        if (!root)
+            return 0;
+        return dfs(root, 0);
+    }
+    
+    int dfs (TreeNode* root, int last) {
+        if (!root)
+            return 0;
+        
+        // deep down a layer, multiply 10 of last sum
+        if (!root->left && !root->right)
+            return 10*last + root->val;
+        
+        int cur = 10 * last + root->val;
+        
+        return dfs(root->left, cur) + dfs(root->right, cur);
+    }
+};
+
 
 /**
  * Definition for a binary tree node.
