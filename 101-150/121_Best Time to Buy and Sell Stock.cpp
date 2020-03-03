@@ -20,6 +20,10 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 */
 
+// keypoints:
+// 1. at most one transaction, dynamic planning is not a good choice
+// 2. two jobs: find minimum buy price, find maximum profit
+// 3. we can do those in one iteration, first buy price, then use it to compute profit
 
 
 class Solution {
