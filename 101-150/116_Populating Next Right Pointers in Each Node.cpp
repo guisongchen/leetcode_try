@@ -36,6 +36,10 @@ The number of nodes in the given tree is less than 4096.
 
 */
 
+// keypoints:
+// 1. recursively: layer traverse, then handle wach layer
+// 2. iteratively: first handle root of left and right suntree
+//    then consider root of left and right suntree as sub-problem
 
 /*
 // Definition for a Node.
@@ -86,6 +90,46 @@ public:
                 }
             }
         }
+        
+        return root;
+    }
+};
+
+
+
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* left;
+    Node* right;
+    Node* next;
+
+    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val, Node* _left, Node* _right, Node* _next)
+        : val(_val), left(_left), right(_right), next(_next) {}
+};
+*/
+class Solution {
+public:
+    Node* connect(Node* root) {
+        // layer tarverse
+        // first do it recursively
+        
+        if (!root)
+            return root;
+        
+        if (root->left)
+            root->left->next = root->right;
+        if (root->right) // root next exist or not?
+            root->right->next = root->next ? root->next->left : nullptr;
+        
+        connect(root->left);
+        connect(root->right);
         
         return root;
     }
