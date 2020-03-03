@@ -21,7 +21,7 @@ Output:
 // 3. check palindrome of those two, then divide s[1~end]
 
 // solution 2
-// 1. 
+// 1. same idea with solution 1, but we use dynamic planning to check palindrome or not 
 
 
 class Solution {
