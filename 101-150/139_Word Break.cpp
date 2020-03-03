@@ -30,6 +30,11 @@ Output: false
 // solution 2:
 // 1. use dynamic planning
 // 2. use hashSet to speed up search
+// 3. solve two issue of dp: define dp and transform equation
+// 4. dp[i]:  [0,i) is breakable or not
+// target: dp[i] -> [0,i)
+// part1: dp[j] -> [0,j)
+// part2: [j, i) -> substr(j, i-1-j+1)
 
 class Solution {
 public:
@@ -61,7 +66,7 @@ public:
         
         // means [0,i) range is breakable, not including i
         // [0,0), [0,1), ..., [0,i), ..., [0,n-1)
-        // notice i-th is ith-charater of s, start from 1
+        // notice i-th is ith-charater of s, start from 0, 0 is null case
         vector<bool> dp(s.size()+1, false);
         dp[0] = true; // init to start loop
         
