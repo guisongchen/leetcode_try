@@ -25,9 +25,14 @@ cache.get(3);       // returns 3
 cache.get(4);       // returns 4
 
 */
-
-
-
+    
+// keypoints:
+// 1. chose correct data structure
+//    pair<int, list::iteration> : <key_value, iteration of usedFreq> 
+//    hashMap<int, pair<int, list::iteration> >  : <key, value&iter_info>
+// 2. get or put exist element, update frequence
+// 3. since we put most recent used element front, tail of list will be least recent used
+    
 class LRUCache {
 public:
     LRUCache(int capacity) : capacity_(capacity) {}
@@ -36,7 +41,7 @@ public:
         auto it = cache.find(key);
         if (it == cache.end())
             return -1;
-        touch(it);
+        updateFreq(it);
         return it->second.first;
     }
     
@@ -45,7 +50,7 @@ public:
         
         // update frequency
         if (it != cache.end()) {
-            touch(it); // if exist, update usedFreq, push to head
+            updateFreq(it); // if exist, update usedFreq, push to head
         } else {
             // if full. erase least recent used(back of usedFreq), update usedFreq
             if (cache.size() == capacity_) {
@@ -57,7 +62,7 @@ public:
             usedFreq.push_front(key);
         }
         
-        // update cache info, touch() will move put key to the head
+        // update cache info, updateFreq() will move input key to the head
         cache[key] = {value, usedFreq.begin()};
     }
     
@@ -68,7 +73,7 @@ private:
     // 1. erase key element(which may not at head)
     // 2. push key to head
     // through erase and push_front make sure key(pointed by it) stay at head
-    void touch(HashListIter::iterator it) {
+    void updateFreq(HashListIter::iterator it) {
         int key = it->first;
         // delete old iterator
         usedFreq.erase(it->second.second);
