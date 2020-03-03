@@ -68,10 +68,12 @@ public:
         // --> a+b = (y-x)(b+c) = n(b+c). n = y-x
         
         // does a+b = n(b+c) satified ?
+        // suppose a+b+c = len
         // b = n(b+c) -a = n(len-a) - a = n*len - (n+1)*a > 0
         // -->  len > n+1/n * a
-        // since a >= 1, if cycle exist, len >= 2, satisfied
-        // id cycle exist, fast are sure to catch slow
+        // if a = 0, b > 0, satisfied
+        // if a >= 1, if cycle exist, len = a +b +c >= 2, satisfied
+        // if cycle exist, fast are sure to catch slow
         
         // How to find cycle begin node ? aka solve a ?
         // a+b = n(b+c)
