@@ -23,6 +23,34 @@ Output: false
 */
 
 
+// solution 1:
+// 1. brutal force, use dfs and memo array, memo[i] means substring i~n in wordlist
+// 2. use hashSet to speed up search
+
+// solution 2:
+// 1. use dynamic planning
+// 2. use hashSet to speed up search
+
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
+        vector<int> memo(s.size(), -1);
+        return check(s, wordSet, 0, memo);
+    }
+    bool check(string s, unordered_set<string>& wordSet, int start, vector<int>& memo) {
+        if (start >= s.size()) return true;
+        if (memo[start] != -1) return memo[start];
+        for (int i = start + 1; i <= s.size(); ++i) {
+            if (wordSet.count(s.substr(start, i - start)) && check(s, wordSet, i, memo)) {
+                return memo[start] = 1;
+            }
+        }
+        return memo[start] = 0;
+    }
+};
+
+
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
