@@ -57,6 +57,23 @@ public:
     }
 };
 */
+
+
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
@@ -69,11 +86,10 @@ public:
         Node* headCopy = new Node(head->val);
         hash[head] = headCopy;
         
+        //Node* cur = headCopy;
+        
         while (head) {
             
-            // update copy node next and random pointer
-            // if copied, update directly
-            // else create new one then update
             if (head->next) {            
                 if (!hash.count(head->next)) {
                     Node* next = new Node(head->next->val);
