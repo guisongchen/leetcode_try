@@ -15,6 +15,12 @@ Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
 */
 
 
+// keypoints: split into two lists then relink
+// three steps:
+// 1. find mid node, split into two parts
+// 2. reverse second part
+// 3. insert reversed second part into first part
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
