@@ -15,6 +15,11 @@ Output: false
 
 */
 
+// keypoints:
+// 1. use double pointers to valid palindrome, head and tail pointers
+// 2. ignore invalid characters. careful about capital and lower cases(ASCII gap is 32)
+// 3. corener case: single character or nullptr
+
 class Solution {
 public:
     bool isPalindrome(string s) {
