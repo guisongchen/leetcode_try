@@ -59,6 +59,58 @@ The Graph is connected and all nodes can be visited starting from the given node
 */
 
 
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> neighbors;
+
+    Node() {}
+
+    Node(int _val, vector<Node*> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+*/
+
+// two ways to solve graph copy: dfs and bfs
+// keypoint is how to handle neigbors
+
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        // keypoint is check neighbors are copyed or not
+        // since no repeated edges, we use node pointer to distinguish them
+        // use dfs, copy one node and all neigbors, then move to next node
+        
+        if (!node)
+            return node;
+        
+        // key <original node, copyed node>
+        unordered_map<Node*, Node*> hash;
+        return dfs(node, hash);
+    }
+    
+    Node* dfs(Node* node, unordered_map<Node*, Node*>& hash) {
+        // if had copyed, return copyed pointer
+        if (hash.count(node))
+            return hash[node];
+        
+        Node* nodeCopy = new Node(node->val);
+        hash[node] = nodeCopy;
+        
+        // handle neighbors
+        for (Node* item : node->neighbors) {
+            nodeCopy->neighbors.push_back(dfs(item, hash));
+        }
+        
+        return nodeCopy;
+    }
+};
+
+
 
 /*
 // Definition for a Node.
