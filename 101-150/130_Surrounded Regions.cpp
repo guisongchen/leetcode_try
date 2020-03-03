@@ -23,14 +23,21 @@ Surrounded regions shouldn’t be on the border, which means that any 'O' on the
 */
 
 
+// keypoints: translate problem into: find O on the border and O connect with it
+// 1. find 'O' on the border, and its connecting, mark them as '#'
+// 2. flipping all remaining 'O' to 'X', which means they are surrounded by "#"
+// 3. set '#' to "O"
+// 4. use four direction vector to do dfs
+
+
 class Solution {
 public:
     void solve(vector<vector<char>>& board) {
         // of course use dfs here
         // keypoint:
-        // 1. find 'O' on the board, and its connecting, mark them as '#'
-        // 2. flipping all remaining 'O' to 'X'
-        // 3. retrieve 'O' back from '#'
+        // 1. find 'O' on the border, and its connecting, mark them as '#'
+        // 2. flipping all remaining 'O' to 'X', which means they are surrounded by "#"
+        // 3. set '#' to "O"
         
         // corner case
         if (board.empty())
