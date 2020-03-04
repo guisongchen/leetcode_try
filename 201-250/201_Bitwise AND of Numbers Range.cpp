@@ -13,7 +13,13 @@ Output: 0
 
 */
 
-
+// keypoints: find the left common bits between m and n
+// compare m and n bit by bit
+// if m != n means current bit is not the same ('0' or '1')
+// then nums form m to n, AND result at current bit must '0'(since already '0' exist)
+// so shift m and n right, compare the next bit
+// shift times are zero numbers on the right side
+// current m is the left common bits(since m == n now)
 
 class Solution {
 public:
