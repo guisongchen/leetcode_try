@@ -12,6 +12,17 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 
 */
 
+// keypoints:
+// 1. create a newHead pointer as return pointer
+//   --> this pointer will move from newHead to head to tail then return
+// 2. from head to tail, move node ahead of newHead one by one
+//   --> notice newHead also move from head to tail
+// 3. head of original list also move from head to tail
+//   --> when head point to tail(nullptr), finish and return
+// 4. unlike swap nodes, we only need to link head->next to newHead
+// 5. since head and newHead update each iteration, won't worry we will lost
+
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -27,16 +38,19 @@ public:
         if (!head)
             return head;
         
-        ListNode* prev = nullptr;
+        ListNode* newHead = nullptr;
         while (head) {
-            // re-link between prev and cur
+            // save to update head pointer
             ListNode* next = head->next; 
-            head->next = prev;
-            // update
-            prev = head;
+            
+            // reverse
+            head->next = newHead;
+            
+            // update pointer of new and old list
+            newHead = head;
             head = next;
         }
         
-        return prev;
+        return newHead;
     }
 };
