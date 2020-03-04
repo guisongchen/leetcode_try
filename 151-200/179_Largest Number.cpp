@@ -19,6 +19,7 @@ Note: The result may be very large, so you need to return a string instead of an
 // 1. order string
 // 2. using string compare instead of int compare
 // 3. keypoint is compare the combination of ab, not a and b, ab > ba then a is bigger
+// 4. careful about leading zero when return final result
 
 class Solution {
 public:
