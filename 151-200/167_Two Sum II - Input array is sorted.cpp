@@ -32,8 +32,8 @@ public:
             
             // search idx from i+1 to avoid reuse elements
             int left = i+1;
-            int right = n; // use [left, right) form
-            while (left < right) {
+            int right = n-1; // use [left, right] as search range
+            while (left <= right) {
                 int mid = left + (right-left)/2;
                 
                 if (numbers[mid] == cur) {
@@ -41,7 +41,7 @@ public:
                 } else if (numbers[mid] < cur) { // go right
                     left = mid + 1;
                 } else {
-                    right = mid;
+                    right = mid - 1;
                 }
             }
         }
