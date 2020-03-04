@@ -34,6 +34,12 @@ Explanation:
 */
 
 
+// keypoints:
+// 1. since no parentheses, not involing priority, life is easier
+// 2. use stack to keep numbers, pop out two numbers when encounter signs, push result in stack
+// careful: "/" must clear with dividend and divisor
+//          turn string into negitive numbers
+
 
 class Solution {
 public:
