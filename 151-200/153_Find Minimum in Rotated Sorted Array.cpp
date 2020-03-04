@@ -19,6 +19,36 @@ Output: 0
 
 */
 
+// keypoints:
+// 1. looking for left boundary
+// 2. compare mid and right to decide which side is in sequence
+
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        // find which part is ordered
+        if (nums.size() == 1)
+            return nums[0];
+        
+        int left = 0;
+        int right = nums.size()-1;
+        // keypoint: draw graph to analyze
+        // compare mid and right instead mid and left make life easier
+        
+        // search range: [left, right)
+        while (left < right) {
+            int mid = left + (right-left)/2;
+            if (nums[mid] > nums[right]) { // search right
+                left = mid + 1; // make sure search range contiguous:[mid+1, right) 
+            } else { //search left, nums[mid] <= nums[right]
+                right = mid; // make sure search range contiguous:[left, mid) 
+            }
+        }
+        
+        return nums[left]; // since left = right, both is ok
+    }
+};
+
 
 class Solution {
 public:
