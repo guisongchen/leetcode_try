@@ -33,6 +33,9 @@ For C programmers, try to solve it in-place in O(1) extra space.
 
 */
 
+// keypoint: reverse entire string, then reverse single word!!
+// 1. corner cases: leading space,  multi-space
+// 2. between word and word should have space
 
 class Solution {
 public:
