@@ -43,6 +43,12 @@ Your code should preferably run in O(n) time and use only O(1) memory.
 
 */
 
+// keypoints: 
+// 1. since have intersection, a->c->b->c = b->c->a->c
+// 2. length listA = a->c ; length listB = b->c
+// -> pa traverse listA, when reach tail, point to headB
+// -> pb traverse listB, when reach tail, point to headA
+// pa and pb will meet at intersection point or tail of list
 
 
 /**
@@ -75,6 +81,10 @@ public:
             pa = pa ? pa->next : headB;
             pb = pb ? pb->next : headA;
         }
+     
+        // if no intersection, pa pointer the end of headB, pb pointer the end of headA
+        // which both nullptr, so jump out loop and return null
+        // if has intersection, return meeting point
 
         return pa;
     }
