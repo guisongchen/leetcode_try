@@ -9,6 +9,7 @@ Output: 1->2->3->4->5
 
 */
 
+// keypoints: use deamon node to protect head(in case head is removed)
 
 /**
  * Definition for singly-linked list.
