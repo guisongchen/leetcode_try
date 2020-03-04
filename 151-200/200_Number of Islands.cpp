@@ -23,6 +23,12 @@ Output: 3
 
 */
 
+// solution 1
+// 1. using dfs and visit maxtrix
+// 2. instead using visit matrix, we turn visited grid into '0'
+
+
+
 
 
 class Solution {
