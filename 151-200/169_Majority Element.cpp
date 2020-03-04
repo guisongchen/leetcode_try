@@ -37,11 +37,13 @@ public:
         
         // useful when and ONLY when more than n/2 repeaters exist
         for (auto num : nums) {
-            if (cnt == 0) { // prev candidate is weak, since exist num occur times equal to it
+            if (cnt == 0) { // prev candidate is weak, since exist num occur times equal to it(so cnt reduce to zero)
                 candidate = num; // update candidate and cnt
                 ++cnt;
             } else {
-                candidate == num ? ++cnt : --cnt;
+                // if duplicted, increase, if not, reduce
+                // if cnt = 0, means two number now occur sanme times, no one will be over n/2
+                candidate == num ? ++cnt : --cnt; 
             }
         }
         
