@@ -27,6 +27,11 @@ Output: 701
 
 */
 
+
+// keypoints:
+// 1. careful about the iteration expression
+// 2. need to add last bit value to current value, move forward one bit, multiply 26
+
 class Solution {
 public:
     int titleToNumber(string s) {
