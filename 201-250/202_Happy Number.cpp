@@ -16,6 +16,11 @@ Explanation:
 
 */
 
+// keypoints:
+// 1. tricky part is how to deicide return false?  if sum == 1, return true, but when return false?
+// --> sum of square if not equal to 1, must equal to some occoured number
+// 2. use hashSet to query sum exist or not(set also makes sure no duplicates exist)
+
 
 class Solution {
 public:
