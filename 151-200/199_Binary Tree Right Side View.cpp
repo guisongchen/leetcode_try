@@ -16,7 +16,19 @@ Explanation:
   
   */
   
+// keypoints:
+// change view, consider as layer traverse, return the last node of each layer
+// why not use root->right?
+// corner case:
+
+/*
+      1            <---
+    /   \
+   2     3         <---
+  /     
+ 5   <---
   
+ */
   
   /**
  * Definition for a binary tree node.
