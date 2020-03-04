@@ -26,6 +26,37 @@ Your solution should be in logarithmic complexity.
 */
 
 
+// solution 1 
+// 1. search from begin to end
+// 2. corner cases: "1" "12" "21"
+
+// solution 2
+// 1. we are told peak must exist, so we can use binary search to get logarithmic complexity
+
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        // corner case: "1" "12" "21"
+        // notice: return index not value
+        if (nums.size() < 2)
+            return 0;
+        if (nums.size() == 2)
+            return nums[0] > nums[1] ? 0 : 1;
+        
+        int n = nums.size();
+        for (int i = 0; i <= n-3; i++) {
+            if (nums[i+1] > nums[i] && nums[i+1] > nums[i+2]) {
+                return i+1;
+            }
+        }
+        
+        if (nums[n-1] > nums[n-2])
+            return n-1;
+        
+        return 0;
+    }
+};
+
 
 class Solution {
 public:
