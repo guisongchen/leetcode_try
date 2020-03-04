@@ -15,6 +15,15 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 
 */
 
+// keypoints: contiguous and largest product
+// negative is tricky, odd is bad even is good
+// zero is tricky too, better than neg, worse than pos
+// so we track min(may be negative), cur(may be zero), max at the same time
+// choose max of those three numbers
+
+// another solution:
+// find max in original array and reversed array, find the max of them(set cur = 1 when meets zero)
+
 
 class Solution {
 public:
@@ -49,5 +58,23 @@ public:
         }
         
         return ret;
+    }
+};
+
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int res = nums[0], prod = 1, n = nums.size();
+        for (int i = 0; i < n; ++i) {
+            res = max(res, prod *= nums[i]);
+            if (nums[i] == 0) prod = 1;
+        }
+        prod = 1;
+        for (int i = n - 1; i >= 0; --i) {
+            res = max(res, prod *= nums[i]);
+            if (nums[i] == 0) prod = 1;
+        }
+        return res;
     }
 };
