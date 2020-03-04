@@ -46,6 +46,11 @@ Version strings do not start or end with dots, and they will not be two consecut
 */
 
 
+// keypoints:
+// 1. corner cases: leading zeros or ending zeros
+// 2. consider as digit sum will help
+// 3. each digit is splied by '.'
+
 
 
 class Solution {
