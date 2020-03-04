@@ -13,6 +13,16 @@ Output: -1->0->3->4->5
 
 */
 
+// keypoints:
+// 1. time complexity: O(nlogn), which means choises are: quick sort, merge sort, heap sort;
+//    list can't reach by index, so merge sort is better choise
+// 2. in order to use merge sort, we need two sorted list, which means split and sort
+// 3. choose mid-point as break point by using slow and fast pointers, 
+//    usig prev pointer to get the tail of left side list
+// 4. when sublists only has one node, they could be sorted
+//    using recursive to get sorted list
+// 5. first recursive, then merge
+// 6. merge two sorted list is travil, we can create a new list or use old one, both works
 
 
 /**
