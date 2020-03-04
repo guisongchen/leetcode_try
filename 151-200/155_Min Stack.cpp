@@ -21,6 +21,39 @@ minStack.getMin();   --> Returns -2.
 
 */
 
+// keypoints:
+// 1. we only need to getMin, not need to popMin, this make it easier to solver
+// 2. we need space to hold min and second-min value
+//
+// solution 1. we can use two stacks to do this, one stack is normal, another keep history-record of min
+// solution 2. we use minVal to keep min, and use the one behind top to hold second-min value  
+
+
+// solution 1
+
+class MinStack {
+public:
+    MinStack() {}    
+    void push(int x) {
+        s1.push(x);
+        if (s2.empty() || x <= s2.top()) s2.push(x);
+    }    
+    void pop() {
+        if (s1.top() == s2.top()) s2.pop();
+        s1.pop();
+    }  
+    int top() {
+        return s1.top();
+    }    
+    int getMin() {
+        return s2.top();
+    }
+    
+private:
+    stack<int> s1, s2;
+};
+
+// solution 2
 
 class MinStack {
 public:
