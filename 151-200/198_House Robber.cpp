@@ -20,6 +20,13 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 */
 
 
+// keypoint: kind of like climb stairs,
+// i-th maxVal is based on use or not use i-th num
+// dp[i] = dp[i-1] means skip i-th num
+// dp[i] = dp[i-2] + nums[i] means use i-th num
+// init: dp[0] and dp[1] are corner cases
+
+
 class Solution {
 public:
     int rob(vector<int>& nums) {
