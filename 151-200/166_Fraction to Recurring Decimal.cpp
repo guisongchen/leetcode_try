@@ -19,6 +19,10 @@ Output: "0.(6)"
 
 */
 
+// keypoints:
+// 1. use ^ to check sign is the same or not
+// 2. remind*10 / divisor to get next decimal
+
 
 class Solution {
 public:
