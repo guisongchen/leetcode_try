@@ -24,6 +24,18 @@ Could you do it in-place with O(1) extra space?
 
 */
 
+// solution 1:
+// 1. backup original array, reassign them using map:   nums[(i+k) % n] = backup[i]
+//    if we link tail to head, it's clear to see the rule.
+
+// solution 2:
+// using O(1) space by reverse sub-array
+// 1 2 3 4 5 6 7 -> reverse n-k from head(n = 7 , k = 3)
+// 4 3 2 1 5 6 7 -> reverse k from tail
+// 4 3 2 1 7 6 5 -> reverse all
+// 5 6 7 1 2 3 4
+// in case k > n, k %= n;
+
 
 class Solution {
 public:
