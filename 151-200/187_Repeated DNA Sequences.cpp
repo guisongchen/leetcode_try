@@ -13,6 +13,13 @@ Output: ["AAAAACCCCC", "CCCCCAAAAA"]
 */
 
 
+// keypoints:
+// A: 0100 0001　　C: 0100 0011　　G: 0100 0111　　T: 0101 0100
+// A, C, G, T only have 3 bits are different, which means we can identify them using 3 bits
+
+// sliding window, 
+
+
 class Solution {
 public:
     vector<string> findRepeatedDnaSequences(string s) {
@@ -35,7 +42,9 @@ public:
         
         // start counting from the 10th
         for (int i = 9, n = s.size(); i < n; ++i) {
-            // mask is to get last 9 characters
+            // mask is to get last 9 characters(27 bits), then << 3 and s[i] & 7 to get last 3 bits(10-th character)
+            // each time we << 3 to left 3 bits left window, so next character s[i]&7 can move in
+            // now window sliding(thanks to << 3)
             cur = ((cur & mask) << 3) | (s[i] & 7);
             if (hash.count(cur)) {
                 if (hash[cur] == 1) { // occur and occur once
