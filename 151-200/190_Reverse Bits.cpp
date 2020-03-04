@@ -28,6 +28,11 @@ If this function is called many times, how would you optimize it?
 
 */
 
+// keypoints:
+// 1. we read n from right to left by n >> 1
+// 2. we set result from left to right by ret << 1
+// 3. init ret as 0, when read 1, plus 1, read 0, no change
+
 class Solution {
 public:
     uint32_t reverseBits(uint32_t n) {
