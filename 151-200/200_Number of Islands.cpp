@@ -27,6 +27,55 @@ Output: 3
 // 1. using dfs and visit maxtrix
 // 2. instead using visit matrix, we turn visited grid into '0'
 
+// solution 2
+// 1. using bfs
+// 2. using queue to keep un-visited grid
+// 3. new id of [i,j] = i*cols + j = i*m +j
+
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        // dfs of course, edges maybe tricky
+        if (grid.empty() || grid[0].empty())
+            return 0;
+         
+        int cnt = 0;
+        int dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+ 
+        // instead of using visit matrix, we turn visited grid into 0
+        
+        for (int i = 0, n = grid.size(); i < n; ++i) {
+            for (int j = 0, m = grid[0].size(); j < m; ++j) {
+                if (grid[i][j] == '1') {
+                    ++cnt;
+                    
+                    queue<int> q{{i*m + j}};
+                    
+                    while (!q.empty()) {
+                        int cur = q.front();
+                        q.pop();
+                        
+                        int cur_i = cur / m;
+                        int cur_j = cur % m;
+                        
+                        for (int k = 0; k < 4; ++k) {
+                            int ni = cur_i + dir[k][0];
+                            int nj = cur_j + dir[k][1];
+                            
+                            if (ni >= 0 && ni < n && nj >= 0 && nj < m && grid[ni][nj] == '1') {
+                                grid[ni][nj] = '0';
+                                q.push(ni*m + nj);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return cnt;
+    }
+};
+
 
 
 
