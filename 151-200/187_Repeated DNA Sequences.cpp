@@ -50,7 +50,7 @@ public:
                 if (hash[cur] == 1) { // occur and occur once
                     ret.push_back(s.substr(i-9, 10));
                 }
-                ++hash[cur]; // to avoid push duplicated into ret
+                ++hash[cur]; // to avoid push duplicated into ret, if aready occure 2 times, it will skip if expression
             } else {
                 hash[cur] = 1;
             }
