@@ -17,6 +17,16 @@ Output: false
 
 */
 
+// keypoints:
+// 1. use slinding window makes sure j - i <= k
+// 2. use set to sort(ascending order) numbers in window
+// default set is ascending order, so we look back for [xxx, nums[i]-t) 
+// iter points to nums[i]-t or someValue less than nums[i]-t
+// which means *iter <= nums[i]-t
+// we require: |nums[i]-*iter| <= t
+// so needs to check *iter <= nums[i] + t ! <--important
+
+
 
 class Solution {
 public:
