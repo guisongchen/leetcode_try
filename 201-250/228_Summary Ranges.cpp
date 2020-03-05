@@ -27,11 +27,21 @@ public:
         for (int i = 0, n = nums.size(); i < n; ++i) {
             // if next integer is continuous with cur, skip safely
             // start idx was update at prev iter so no need worry, safe
-            // use i != n-1 in case overflow
+            // use i != n-1 in case nums[i+1] overflow
             if (i != n-1 && nums[i]+1 == nums[i+1])
                 continue;
             
-            if (start == i) // which means nums[i] != nums[i-1]
+            // now nums[i]+1 != nums[i+1]
+            
+            // if (start == i)
+            // this iteration: start == i  -->  last iteration: start = i-1 + 1,
+            // means nums[i-1]+1 != nums[i],  since now nums[i]+1 != nums[i+1]
+            // so nums[i] is single
+            
+            // if (start != i) --> nums[i-1] + 1 = nums[i]
+            // so start from nums[start] to nums[i]
+            
+            if (start == i) // which means nums[i] != nums[i-1]+1
                 ret.push_back(to_string(nums[i]));
             else // nums[i] == nums[i-1] && nums[i] != nums[i+1]
                 ret.push_back(to_string(nums[start]) + "->" + to_string(nums[i]));
