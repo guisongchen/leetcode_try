@@ -22,6 +22,45 @@ Output: 4
 //    --> row range changes, so col range changes, iteration each grid to find maximum value
 //    --> using histogram to find contiguous square(which all grid should be '1')
 
+
+
+// solution 2: dynamic planning
+// 1. defination of dp[i][j], max square from [0][0] to [i][j]
+// 2. transform equation: dp[i][j] = min(dp[i-1][j], min(dp[i-1][j-1], dp[i][j-1])) + 1;
+//    --> why min?
+//    --> only dp[i-1][j], dp[i-1][j-1], dp[i][j-1] all equal to 1, dp[i][j] will plus one
+//    --> if one of them is '0', won't form a square
+// 3. border condition: i = 0, j = 0, dp[i][j] = grid[i][j]
+
+class Solution {
+public:
+    int maximalSquare(vector<vector<char>>& matrix) {
+        // corner case
+        if (matrix.empty() || matrix[0].empty())
+            return 0;
+        
+        int row = matrix.size();
+        int col = matrix[0].size();
+        
+        vector<vector<int>> dp(row, vector<int>(col, 0));
+        
+        int ret = 0;
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (i == 0 || j == 0)
+                    dp[i][j] = matrix[i][j] - '0';           
+                else if (matrix[i][j] == '1') {
+                    dp[i][j] = min(dp[i-1][j], min(dp[i-1][j-1], dp[i][j-1])) + 1;
+                }
+                
+                ret = max(ret, dp[i][j]);
+            }
+        }
+        
+        return ret*ret;
+    }
+};
+
 class Solution {
 public:
     int maximalSquare(vector<vector<char>>& matrix) {
