@@ -19,6 +19,10 @@ Output: true
 
 */
 
+// keypoints:
+// 1. use insert sort algorithm
+// 2. do duplicate check while sorting array
+
 
 class Solution {
 public:
