@@ -26,6 +26,15 @@ You may assume that there are no duplicate edges in the input prerequisites.
 
 */
 
+// keypoints:
+// 1. it is a graph problem, we should know the concept about indegree and outdegree of graph
+// 2. if indegree == 0, means we can take this course(no prerequisites exist)
+// 3. traverse input prerequistes to build indegree and outdegress(supplyChain) matrix
+// two choises:
+// 1st. dfs & visit matrix
+  //    0: non-visited(init state); 1: checked(ok); -1: current used in recursive loop(revisited it means conflict)
+// 2nd. bfs & candidates queue
+
 
 
 class Solution {
