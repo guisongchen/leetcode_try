@@ -136,6 +136,7 @@ public:
         if (!root || root == q || root == p)
             return root;
         
+        // use path to save common part of path1 and path2
         vector<TreeNode*> path1;
         vector<TreeNode*> path2;
         vector<TreeNode*> path;
