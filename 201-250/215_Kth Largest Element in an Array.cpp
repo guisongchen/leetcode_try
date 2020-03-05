@@ -21,7 +21,11 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 // 2. when elements <= 6, use insert sort
 // 3. use median3 to get pivot
 // 4. swap pivot and nums[right-1], left, right-1, right is sorted, unsorted range:[left+1, right-2]
-// 5. when i = j, do not swap
+// 5. when i > j, we need break loop and start next iteration
+// if nums[i] == pivot_value, we stop and switch
+// --> worst case: all elements eqaual to pivot value, we need swap every time, O(n^2)
+// --> profit:  if not the worst case, the pointer will stop at mid-point, so two sub-array is balanced(same lenght)
+//              if we not stop at nums[i] = pivot, pointer will stop at the begin or ending, not balanced
 
 
 class Solution {
