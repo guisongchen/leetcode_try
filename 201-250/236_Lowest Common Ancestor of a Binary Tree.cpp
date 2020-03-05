@@ -45,6 +45,41 @@ public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         // following code valid when p and q are sure exist
         // recursive is simple but not so intuitive
+        
+        // notice if p or q is root, then return itself
+        if (!root || root == q || root == p)
+            return root;
+        
+        // search left, return value may be null or p or q or some valid node
+        // in fact, since p and q must exist, left and right can't be both null
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        // search right, return value may be null or p or q or some valid node
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        
+        // since left and right both return non-null, they must return q or p
+        if (left && right)
+            return root;
+        // since q or p must exist, so must one of left and right non-null
+        // we should return non-null value
+        return left ? left : right;
+        
+    }
+};
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        // following code valid when p and q are sure exist
+        // recursive is simple but not so intuitive
         // use dfs to find path of p and q, then compare to find LCA
         if (!root || root == q || root == p)
             return root;
