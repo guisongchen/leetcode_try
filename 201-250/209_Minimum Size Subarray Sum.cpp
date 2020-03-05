@@ -12,6 +12,14 @@ If you have figured out the O(n) solution, try coding another solution of which 
 
 */
 
+// keypoints:
+// 1. use two pointers: left and right
+// 2. at first, fix left = 0, move right 1 step each time to locate position when sums >= s 
+//    --> which length increases each step and gives us the length when fix left  
+// 3. fix right pointer we find last step, move left 1 step until sum < s, 
+//    --> which length reduces each time and  gives us the min-length if left is free
+// 4. iteration right from 0 to n-1, then find the minimum
+
 
 class Solution {
 public:
