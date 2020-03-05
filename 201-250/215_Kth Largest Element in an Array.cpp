@@ -16,6 +16,14 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 */
 
 
+// keypoints:
+// 1. quick sort
+// 2. when elements <= 6, use insert sort
+// 3. use median3 to get pivot
+// 4. swap pivot and nums[right-1], left, right-1, right is sorted, unsorted range:[left+1, right-2]
+// 5. when i = j, do not swap
+
+
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
