@@ -23,6 +23,14 @@ You may assume that all operations are valid (for example, no pop or peek operat
 
 */
 
+// keypoints:
+// 1. push elements into stack 1
+// 2. if pop or peek, then move all elements from stack 1 to stack 2
+// 3. now stack 2 in queue order
+// 4. both stack 1 and stack 2 have elements, return empty only when both empty 
+// 5. push----stack 1
+// 6. pop, empty and peek -----stack 1 --> stack 2
+
 
 class MyQueue {
 public:
