@@ -27,6 +27,7 @@ public:
         if (B >= H || A >= G || D <= F || C <= E)
             return sum1 + sum2;
         
+        // same side (not diagonal) if does overlop
         int overlap = (min(D, H) - max(B, F)) * (min(C, G) - max(A, E));
         
         return sum1 - overlap + sum2;
