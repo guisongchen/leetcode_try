@@ -28,6 +28,12 @@ You may assume that there are no duplicate edges in the input prerequisites.
 
 */
 
+// keypoints:
+// 1. same trick as Course Schedule I
+// 2. push course into result when indegree == 0, which means no prerequistes
+// 3. if all courses's indegree == 0, return result vector
+// 4. if not, means no solution, return empty vector
+
 class Solution {
 public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
