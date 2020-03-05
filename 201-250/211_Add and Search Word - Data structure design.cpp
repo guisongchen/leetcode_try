@@ -20,6 +20,12 @@ You may assume that all words are consist of lowercase letters a-z.
 
 */
 
+
+// keypoints:
+// 1. same trick as prefix tree
+// 2. since '.' exist, use dfs to solve this
+
+
 class WordDictionary {
 public:
     /** Initialize your data structure here. */
