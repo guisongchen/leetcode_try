@@ -19,6 +19,14 @@ Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
              
 */
 
+// keypoints:
+// 1. similar as house robber I, challenge is first one and last now are adjacent
+//    --> can't rob first and last at same time
+// 2. divide this into two problems: 
+// 1st. remove last house and do house robber I
+// 2nd. remove first house and do house robber I
+// 3. choose the maximum of those two scenarios
+
 
 class Solution {
 public:
