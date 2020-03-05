@@ -19,7 +19,10 @@ All inputs are guaranteed to be non-empty strings.
 
 */
 
-
+// keypoints:
+// 1. using next[] to keep link to next character
+// 2. using isLeaf to determine whether pointer reach the ending of word or not.
+// 3. delete after new operate
 
 
 class Trie {
