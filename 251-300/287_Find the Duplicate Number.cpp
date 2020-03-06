@@ -29,7 +29,7 @@ There is only one duplicate number in the array, but it could be repeated more t
 // search range: [1,n) n = nums.size();
 // --> nums.size() = n, nums value in range [1, n-1], if we choose right = n, should use <. right = n-1, use =
 // return value depends on we serach left boundary or right boundary
-// --> left boundary: return left    right boundary: return left-1 
+// since after loop, left = right, both ok 
 
 
 class Solution {
@@ -53,12 +53,14 @@ public:
             // compare all nums with val, decide 
             int cnt = 0;
             for (int i = 0; i < n; ++i) {
-                if (nums[i] <= mid) {
+                if (nums[i] <= mid) { // must = ?
                     ++cnt;
                 } 
             }
             
-            if (cnt <= mid) { // 1~mid has no repeat, move to [mid+1, n], 
+            
+            // must = ? 
+            if (cnt <= mid) { // 1~mid has no repeat, move to [mid+1, n],
                 left = mid + 1;
             } else {
                 right = mid;
