@@ -20,6 +20,14 @@ Explanation: No such pair of words.
 
 */
 
+// keypoints:
+// 1. find two string which not share common letters
+// 2. find the maximum product
+// solution 1: brutual force, dfs
+// solution 2: hash table
+// use int(32 bits) to represent occured characters in word(since only 26 characters in ASCII)
+// if two words share no common character: int a & int b == 0
+
 
 class Solution {
 public:
