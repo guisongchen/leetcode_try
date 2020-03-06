@@ -17,6 +17,8 @@ You may assume that you have an infinite number of each kind of coin.
 */
 
 
+// keypoints: use dynamic planning, why not greedy?
+
 
 class Solution {
 public:
@@ -25,7 +27,9 @@ public:
         if (amount < 1)
             return amount == 0 ? 0 : -1;
         
-        // start from 1, use amount+1 to distinguish all '1' case
+        // amount start from 1, array start from 0, use amount+1 to align index
+        // we will use min below, should init as INT_MAX, consider INT_MAX+1  overflow, so we choose amount+1
+        // because the answer will never over amount+1 (worst case: use amount digit '1' to get amount)
         vector<int> dp(amount+1, amount+1); // worst case: if exist 1, use amount 1
         dp[0] = 0;
         
@@ -38,6 +42,7 @@ public:
             }
         }
         
+        // check exist or not
         return dp.back() == amount+1 ? -1 : dp.back();
     }
 };
