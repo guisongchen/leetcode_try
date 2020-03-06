@@ -20,6 +20,11 @@ Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","
              
 */
 
+// keypoints: direct graph traverse
+// 1. use dfs to find path, need reverse to get correct order
+// 2. use stack
+// why reverse or use stack ? 
+// -->the one has no adjacency is the first push stack, but last arrival airport
 
 
 class Solution {
