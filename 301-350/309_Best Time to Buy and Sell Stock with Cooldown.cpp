@@ -15,7 +15,7 @@ Explanation: transactions = [buy, sell, cooldown, buy, sell]
 
 */
 
-
+// keypoints: use finite state machine
 
 class Solution {
 public:
