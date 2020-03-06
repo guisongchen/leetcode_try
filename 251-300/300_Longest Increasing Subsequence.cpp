@@ -15,6 +15,8 @@ Follow up: Could you improve it to O(n log n) time complexity?
 
 */
 
+// solution 1: dynamic planning
+// solution 2: binary search
 
 
 class Solution {
