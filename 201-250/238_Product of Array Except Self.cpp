@@ -15,6 +15,8 @@ Could you solve it with constant space complexity? (The output array does not co
 
 */
 
+// keypoints:
+// 1. result[i] = prevProduct[i] * nextProduct[i]
 
 class Solution {
 public:
