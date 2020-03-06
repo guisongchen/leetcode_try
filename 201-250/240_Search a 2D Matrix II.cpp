@@ -21,6 +21,15 @@ Given target = 20, return false.
 
 */
 
+// keypoints:
+// 1. binary search not functional, use corner search
+// 2. how to find the right corner?
+// 3. try four vertexes of matrix, those rules should be satified: 
+//    --> move to horizontal direction, value monotonically change (increasing or decreasing)
+//    --> move to vertical direction, value monotonically change (increasing or decreasing)
+// 4. set two pointers for step 3
+// 5. update those two pointers to find solution(update process is similar to binary search)
+
 
 class Solution {
 public:
