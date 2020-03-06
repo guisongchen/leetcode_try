@@ -20,6 +20,18 @@ There is only one duplicate number in the array, but it could be repeated more t
 */
 
 
+// keypoints:
+// 1. in array [1,n], if no duplicates exist, mid = (1+n)/2, which split array into left and right part
+// 2. if no duplicates exist, count(i<mid) = count (i > mid), left and right part should have the same amount
+// 3. if duplicates exist, which part has more num than mid, must exist duplicates
+// 4. how to decide search range ( or ] and return value (left ? right ?) 
+// 
+// search range: [1,n) n = nums.size();
+// --> nums.size() = n, nums value in range [1, n-1], if we choose right = n, should use <. right = n-1, use =
+// return value depends on we serach left boundary or right boundary
+// --> left boundary: return left    right boundary: return left-1 
+
+
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
@@ -33,7 +45,7 @@ public:
         int left = 1;
         int right = n;
         
-        // use the pre-info nums are in range [1, n]
+        // given info: nums are in range [1, n]
         // which means value has same range with idx
         while (left < right) {
             int mid = left + (right-left)/2;
