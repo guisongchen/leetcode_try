@@ -19,6 +19,9 @@ The first node is considered odd, the second node even and so on ...
 
 */
 
+// keypoints:
+// 1. set two head, one point to head(odd), another point to head->next(even)
+// 2. link even head behind odd tail
 
 /**
  * Definition for singly-linked list.
