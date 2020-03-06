@@ -25,6 +25,12 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 
 */
 
+// keypoints: use hash table
+// 1. hash is one to one map
+// 2. same character in pattern must map to the same string
+// 3. same string msut map to the same character in pattern
+// 
+
 
 class Solution {
 public:
@@ -36,11 +42,11 @@ public:
         int start = 0;     
         int n = str.size();
         unordered_map<string, char> hash;
-        string cur;
+        string cur; // memory prev character in pattern array
         
         int idx = 0; // idx of pattern
         for (int i = start; i < n; ++i) {
-            if (str[i] == ' ' || i == n-1) {
+            if (str[i] == ' ' || i == n-1) { // notice last string has no " " behind
                 string temp = i == n-1 ? str.substr(start, n-start) : 
                                          str.substr(start, i-start);    
                 start = i+1;
@@ -51,9 +57,9 @@ public:
                         hash[temp] = ch;
                         cur += ch;
                     }
-                    else
+                    else // ch exist in cur, means two patter ch map to the same string
                         return false;
-                } else if (hash[temp] != ch){
+                } else if (hash[temp] != ch){  // same string map to diefferent pattern characher !!
                     return false;
                 }
             }
