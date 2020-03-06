@@ -32,6 +32,13 @@ public:
 };
 
 
+// keypoints:
+// peak: get next value without move current iterator
+// how ?
+// 1. use cache, keep next value as cache and set flag
+// 2. when call next and peek, check cache then dicide return cache or next.
+// 3. empty when cacheFlag and hasNext both false
+
 class PeekingIterator : public Iterator {
 public:
 	PeekingIterator(const vector<int>& nums) : Iterator(nums), cacheFlag_(false) {
@@ -42,7 +49,7 @@ public:
 
     // Returns the next element in the iteration without advancing the iterator.
 	int peek() {
-        if (!cacheFlag_) {
+        if (!cacheFlag_) { // whenwe call peak as the first operation, before next
             cache_ = Iterator::next();
             cacheFlag_ = true;
         }
