@@ -61,6 +61,8 @@ public:
         // init backup with nums[0]
         vector<int> backup({nums[0]});
         for (int i = 1; i < n; ++i) {
+            
+            // ---- find lower_bound---------------
             int left = 0;
             int right = backup.size();
             while (left < right) {
@@ -77,6 +79,8 @@ public:
             } else { // update
                 backup[left] = nums[i];
             }
+            
+            // -------------------------------------
         }
         
         return backup.size();    
