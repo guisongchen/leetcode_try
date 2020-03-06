@@ -19,6 +19,13 @@ Can you do it in O(n) time and/or in-place with O(1) extra space?
 */
 
 
+// keypoints:
+// 1. array value looks like:  small big small big small big
+// 2. sort and split nums into two parts: left and right
+// 3. this would be ok: left right left right left right .....
+// 4. get value from end of left and right part: --mid and --big
+// 5. compute mid wisely: mid = (n+1)/2 ??
+
 
 class Solution {
 public:
