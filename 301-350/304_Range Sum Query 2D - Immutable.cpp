@@ -24,7 +24,10 @@ You may assume that row1 ≤ row2 and col1 ≤ col2.
 
 */
 
-
+// keypoints:
+// 1. dp[i][j] = sum from[0][0] to [i][j]
+// 2. sum of range = dp - overlap
+// 3. using padding avoid border index overflow
 
 class NumMatrix {
 public:
