@@ -22,9 +22,42 @@ Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","
 
 // keypoints: direct graph traverse
 // 1. use dfs to find path, need reverse to get correct order
-// 2. use stack
+// 2. use dfs and stack
 // why reverse or use stack ? 
-// -->the one has no adjacency is the first push stack, but last arrival airport
+// -->the one has no adjacency is the first push into ret, but last arrival airport, so inverse
+// -->since we use dfs, use stack to dig in
+
+
+class Solution {
+public:
+    vector<string> findItinerary(vector<vector<string>>& tickets) {
+        // graph traverse
+        // use hash table to storage departure airport and multiset to storage arrival airport
+        stack<string> cand{{"JFK"}};
+        vector<string> ret;
+        unordered_map<string, multiset<string>> adj;
+        
+        for (auto it : tickets) {
+            adj[it[0]].insert(it[1]);
+        }
+        
+        while (!cand.empty()) {
+            string &cur = cand.top();
+            
+            if (adj[cur].empty()) { // arrival airport
+                ret.push_back(cur);
+                cand.pop(); // check over
+            } else {
+                // choose begin each time to make sure we erase different elements until empty
+                cand.push(*adj[cur].begin()); // first element of cur's adjacencies
+                adj[cur].erase(adj[cur].begin());
+            }
+        }
+        
+        return vector<string> (ret.rbegin(), ret.rend());
+        
+    }
+};
 
 
 class Solution {
