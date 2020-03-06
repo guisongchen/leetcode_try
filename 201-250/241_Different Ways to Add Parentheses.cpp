@@ -23,6 +23,12 @@ Explanation:
 */
 
 
+// keypoints:
+// 1. use sign to seperate different cases
+// 2. parentheses could be added before or after sign, two cases exist
+// 3. should raise divide and conque naturally, since sub-cases have same problem constructure
+// 4. notice the corner case when no sign exist!!
+
 class Solution {
 public:
     vector<int> diffWaysToCompute(string input) {
