@@ -5,7 +5,7 @@ Given an unsorted array return whether an increasing subsequence of length 3 exi
 Formally the function should:
 
 Return true if there exists i, j, k
-such that arr[i] < arr[j] < arr[k] given 0 ¡Ü i < j < k ¡Ü n-1 else return false.
+such that arr[i] < arr[j] < arr[k] given 0 Â¡Ãœ i < j < k Â¡Ãœ n-1 else return false.
 Note: Your algorithm should run in O(n) time complexity and O(1) space complexity.
 
 Example 1:
@@ -18,6 +18,11 @@ Input: [5,4,3,2,1]
 Output: false
 
 */
+
+// keypoints:
+// 1. if we find  num1 < num2 < it, this must be ascending order
+// 2. use two pinter to update num1 and num2
+// 3. use "<=" in case num1= num2 = it
 
 
 class Solution {
