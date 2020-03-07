@@ -19,6 +19,31 @@ Can you do it like a boss? Do it without using any builtin function like __built
 */
 
 
+// keypoints:
+// 1. rules by oberservation:
+// 2. for odd: dp[i] = dp[i/2] + 1,  aka move 1 bit to *2, add 1 bit to make odd 
+// 3. for even: dp[i] = dp[i/2]. aka only move 1 bit, not add
+
+class Solution {
+public:
+    vector<int> countBits(int num) {
+        
+        vector<int> dp(num+1, 0);
+        
+        for (int i = 1; i <= num; ++i) {
+            if (i % 2)
+                dp[i] = dp[i/2] + 1;
+            else
+                dp[i] = dp[i/2];
+            
+        }
+        
+        return dp;
+        
+    }
+};
+
+
 class Solution {
 public:
     vector<int> countBits(int num) {
