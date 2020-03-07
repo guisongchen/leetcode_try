@@ -31,6 +31,12 @@ Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
 
 */
 
+// keypoints:
+// 1. layer trverse may be wrong, because we may skip two or more layers to find maximum
+//    it may happens on left-subtree or right-subtree
+// 2. better use recursive, split point will be use current node or not
+//    base on different choise, we get maximum from two braches
+
 
 /**
  * Definition for a binary tree node.
